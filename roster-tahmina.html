@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>sub rosa — the roster</title>
+<title>sub rosa — the list</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
@@ -174,7 +174,7 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
   <span class="login-mark">sub rosa pr</span>
   <div class="login-box">
     <div class="login-emblem"><span>sr</span></div>
-    <h1 class="login-h1">the<br><em>roster</em></h1>
+    <h1 class="login-h1">the<br><em>list</em></h1>
     <p class="login-sub">a living list, kept under the rose.</p>
     <div class="login-rule"></div>
     <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email" /></div>
@@ -188,7 +188,7 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 <div id="screen-app">
   <div class="topbar">
     <div class="topbar-left">
-      <span class="topbar-wordmark">the roster</span>
+      <span class="topbar-wordmark">the list</span>
       <div class="topbar-divider"></div>
       <span class="topbar-influencer" id="t-name"></span>
     </div>
@@ -276,14 +276,14 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
       <div class="modal-top-row">
         <div>
           <div class="modal-heading" id="m-heading">new brand</div>
-          <div class="modal-subheading" id="m-sub">add to the roster</div>
+          <div class="modal-subheading" id="m-sub">add to the list</div>
         </div>
         <button class="modal-close" onclick="closeModal()">×</button>
       </div>
     </div>
     <div class="modal-body" id="modal-body-content"></div>
     <div class="modal-footer">
-      <button class="btn-save" id="save-btn" onclick="saveEntry()">save to roster</button>
+      <button class="btn-save" id="save-btn" onclick="saveEntry()">save to list</button>
       <button class="btn-del" id="btn-del" style="display:none" onclick="deleteEntry()">remove</button>
     </div>
   </div>
@@ -562,7 +562,7 @@ function openModal(id, section) {
     delBtn.style.display = 'block';
   } else if (modalMode === 'brands') {
     document.getElementById('m-heading').textContent = 'new brand';
-    document.getElementById('m-sub').textContent = 'add to the roster';
+    document.getElementById('m-sub').textContent = 'add to the list';
     document.getElementById('modal-body-content').innerHTML = brandForm(null);
     setStatusPicker('to-pitch', 'brands');
     delBtn.style.display = 'none';
@@ -736,7 +736,7 @@ async function saveEntry() {
 
   if (modalMode === 'brands') {
     const brand = document.getElementById('f-brand')?.value.trim();
-    if (!brand) { alert('Please enter a brand name.'); saving = false; btn.textContent = 'save to roster'; btn.disabled = false; return; }
+    if (!brand) { alert('Please enter a brand name.'); saving = false; btn.textContent = 'save to list'; btn.disabled = false; return; }
     const data = {
       brand, ig: document.getElementById('f-ig')?.value.trim(),
       website: document.getElementById('f-website')?.value.trim(),
@@ -757,7 +757,7 @@ async function saveEntry() {
     renderBrands();
   } else {
     const name = document.getElementById('f-name')?.value.trim();
-    if (!name) { alert('Please enter an agency name.'); saving = false; btn.textContent = 'save to roster'; btn.disabled = false; return; }
+    if (!name) { alert('Please enter an agency name.'); saving = false; btn.textContent = 'save to list'; btn.disabled = false; return; }
     const data = {
       name, speciality: document.getElementById('f-speciality')?.value.trim(),
       website: document.getElementById('f-website')?.value.trim(),
@@ -779,7 +779,7 @@ async function saveEntry() {
   }
 
   setLoading(100); setSyncNote('✓ synced · updated just now');
-  saving = false; btn.textContent = 'save to roster'; btn.disabled = false;
+  saving = false; btn.textContent = 'save to list'; btn.disabled = false;
   closeModal();
 }
 
