@@ -301,7 +301,23 @@ const API        = 'https://api.jsonbin.io/v3';
 const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
 let brands   = [];
-let agencies = [];
+let agencies = [
+  {id:'a001',name:'Burson Canada',speciality:'PR & Communications',website:'https://burson.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a002',name:'Langton PR',speciality:'PR & Communications',website:'https://langtonpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a003',name:'Harbinger Ideas',speciality:'PR & Communications',website:'https://harbingerideas.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a004',name:'Matinee Studios',speciality:'PR & Talent',website:'https://matineestudios.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a005',name:'1 Milk 2 Sugars',speciality:'PR & Influencer Marketing',website:'https://1milk2sugars.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a006',name:'Viral Nation',speciality:'Influencer Marketing',website:'https://viralnation.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a007',name:'Citizen Relations',speciality:'PR & Communications',website:'https://citizenrelations.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a008',name:'Veritas Communications',speciality:'PR & Communications',website:'https://veritascomm.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a009',name:'Strategic Objectives',speciality:'PR & Influencer Marketing',website:'https://sopr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a010',name:'Blend PR',speciality:'PR & Communications',website:'https://blendpr.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a011',name:'NKPR',speciality:'PR & Lifestyle',website:'https://nkpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a012',name:'Faulhaber',speciality:'PR & Fashion',website:'https://faulhaber.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a013',name:'NATIONAL PR',speciality:'PR & Communications',website:'https://national.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a014',name:'Pomp & Circumstance',speciality:'PR & Lifestyle',website:'https://pompandcircumstancepr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'a015',name:'PR Axis',speciality:'PR & Communications',website:'https://praxis.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+];
 let brandBinId   = localStorage.getItem(BIN_KEY + '_brands') || null;
 let agencyBinId  = localStorage.getItem(BIN_KEY + '_agencies') || null;
 let editingId    = null;
@@ -402,7 +418,7 @@ async function showApp() {
   if (br.existed) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
   else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
 
-  if (ar.existed) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
+  if (ar.existed && ar.data.length > 0) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
   else if (agencies.length > 0) { await saveBin(agencyTag, aKey, agencies, {}); }
 
   setLoading(100); setSyncNote('✓ synced · changes sync automatically');
