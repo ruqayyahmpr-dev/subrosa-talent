@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0058)file:///Users/ruqayyahmohammed/Downloads/roster-hayle.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>sub rosa — the list</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./roster-hayle_files/css2" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -177,8 +177,8 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
     <h1 class="login-h1">the<br><em>list</em></h1>
     <p class="login-sub">a living list, kept under the rose.</p>
     <div class="login-rule"></div>
-    <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email" /></div>
-    <div class="login-field"><input type="password" id="l-pass" placeholder="passcode" /></div>
+    <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email"></div>
+    <div class="login-field"><input type="password" id="l-pass" placeholder="passcode"></div>
     <button class="login-cta" id="login-btn" onclick="doLogin()">enter</button>
     <p class="login-err" id="l-err"></p>
   </div>
@@ -200,33 +200,33 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 
   <!-- SECTION TABS -->
   <div class="section-tabs">
-    <button class="section-tab active" id="tab-brands" onclick="switchSection('brands')">brands</button>
-    <button class="section-tab" id="tab-agencies" onclick="switchSection('agencies')">pr agencies</button>
+    <button class="section-tab active" id="tab-brands" onclick="switchSection(&#39;brands&#39;)">brands</button>
+    <button class="section-tab" id="tab-agencies" onclick="switchSection(&#39;agencies&#39;)">pr agencies</button>
   </div>
 
   <!-- FILTER BAR -->
   <div class="filterbar" id="filterbar-brands">
     <span class="filterbar-label">filter —</span>
     <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'brands')">all</button>
-      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,'brands')">to pitch</button>
-      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,'brands')">pitched</button>
-      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,'brands')">in conversation</button>
-      <button class="filter-pill" data-status="working" onclick="setFilter(this,'brands')">working with</button>
-      <button class="filter-pill" data-status="past" onclick="setFilter(this,'brands')">past collab</button>
-      <button class="filter-pill" data-status="passed" onclick="setFilter(this,'brands')">passed</button>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,&#39;brands&#39;)">all</button>
+      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,&#39;brands&#39;)">to pitch</button>
+      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,&#39;brands&#39;)">pitched</button>
+      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,&#39;brands&#39;)">in conversation</button>
+      <button class="filter-pill" data-status="working" onclick="setFilter(this,&#39;brands&#39;)">working with</button>
+      <button class="filter-pill" data-status="past" onclick="setFilter(this,&#39;brands&#39;)">past collab</button>
+      <button class="filter-pill" data-status="passed" onclick="setFilter(this,&#39;brands&#39;)">passed</button>
     </div>
   </div>
 
   <div class="filterbar" id="filterbar-agencies" style="display:none">
     <span class="filterbar-label">filter —</span>
     <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'agencies')">all</button>
-      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,'agencies')">to reach out</button>
-      <button class="filter-pill" data-status="reached" onclick="setFilter(this,'agencies')">reached out</button>
-      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,'agencies')">meeting booked</button>
-      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,'agencies')">on roster</button>
-      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,'agencies')">not a fit</button>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,&#39;agencies&#39;)">all</button>
+      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,&#39;agencies&#39;)">to reach out</button>
+      <button class="filter-pill" data-status="reached" onclick="setFilter(this,&#39;agencies&#39;)">reached out</button>
+      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,&#39;agencies&#39;)">meeting booked</button>
+      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,&#39;agencies&#39;)">on roster</button>
+      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,&#39;agencies&#39;)">not a fit</button>
     </div>
   </div>
 
@@ -300,7 +300,139 @@ const MASTER_KEY = '$2a$10$niEjfkTssnALjnBJE9J4Q.54Zk5rYikfKdWDgz1BBL/rEWfCFz9k2
 const API        = 'https://api.jsonbin.io/v3';
 const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
-let brands   = [];
+let brands = [
+  // Fashion & Apparel
+  {id:'h001',brand:'Quince',ig:'@onequince',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h002',brand:'KITS Eyecare',ig:'@kitseyecare',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h003',brand:'Winners',ig:'@winners',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h004',brand:'Knix',ig:'@knix',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h005',brand:'Princess Polly',ig:'@princesspolly',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Beauty & Skincare
+  {id:'h006',brand:'Aesop',ig:'@aesop',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h007',brand:'Aestura Canada',ig:'@aestura_ca',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h008',brand:'OSEA Malibu',ig:'@oseamalibu',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h009',brand:'Bonjout Beauty',ig:'@bonjoutbeauty',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h010',brand:'Beautiful Earth Boutique',ig:'@beautifulearthboutique',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h011',brand:'Salt & Stone',ig:'@saltandstone',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h012',brand:'Phlur',ig:'@phlur',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h013',brand:'Jo Malone London',ig:'@jomalonelondon',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h014',brand:'OMY Laboratoires',ig:'@omylaboratoires',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h015',brand:'Grown Alchemist',ig:'@grownalchemist',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h016',brand:'Dermalogica Canada',ig:'@dermalogicacanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h017',brand:'Estée Lauder Canada',ig:'@esteelaudercanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Wellness & Fitness
+  {id:'h018',brand:'Tape Her Sleep',ig:'@tapehersleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h019',brand:'Hatch',ig:'@hatchforsleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h020',brand:'Golf Town',ig:'@golftown',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h021',brand:'CanPrev',ig:'@canprev',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h022',brand:'Saje Wellness',ig:'@sajewellness',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Home & Lifestyle
+  {id:'h023',brand:'If Only Home',ig:'@ifonlyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h024',brand:'Veradek',ig:'@veradek',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h025',brand:'Every Room',ig:'@everyroom.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h026',brand:'Tuck Bedding',ig:'@tuckbedding',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h027',brand:'Boy Smells',ig:'@boy__smells',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h028',brand:'P.F. Candle Co.',ig:'@pfcandleco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h029',brand:'Parachute Home',ig:'@parachutehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h030',brand:'SMEG Canada',ig:'@smegcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h031',brand:'Our Place',ig:'@ourplace',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h032',brand:'Great Jones',ig:'@greatjones',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h033',brand:'Caraway Home',ig:'@caraway_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h034',brand:'Gozney',ig:'@gozney',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h035',brand:'Public Goods',ig:'@publicgoods',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h036',brand:'Grove Collaborative',ig:'@grovecollaborative',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h037',brand:'Burrow',ig:'@burrow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h038',brand:'Dupray',ig:'@dupray',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h039',brand:'Outer',ig:'@liveouter',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h040',brand:'Silk & Snow',ig:'@silkandsnow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h041',brand:'Castlery Canada',ig:'@castleryca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h042',brand:'Refco',ig:'@refco.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h043',brand:'Rug and Weave',ig:'@rugandweave',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h044',brand:'Bouclair',ig:'@bouclair',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h045',brand:'Wayfair Canada',ig:'@wayfaircanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h046',brand:'AllModern',ig:'@allmodern',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h047',brand:'Brooklinen',ig:'@brooklinen',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h048',brand:'Thuma',ig:'@thuma.co',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h049',brand:'Cozey',ig:'@cozey',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h050',brand:'Sundays Furniture',ig:'@sundaysfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h051',brand:'Endy',ig:'@endy',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h052',brand:'Hush Blankets',ig:'@hushblankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h053',brand:'Pillow Cube',ig:'@pillowcube',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h054',brand:'Soft Frame Designs',ig:'@softframedesigns',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h055',brand:'Abbode',ig:'@abbode',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h056',brand:'Boost Blinds',ig:'@boost.blinds',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h057',brand:'Two Pages Curtains',ig:'@twopagescurtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h058',brand:'Curtarra Curtains',ig:'@curtarra_curtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h059',brand:'Rove Concepts',ig:'@roveconcepts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h060',brand:'Tekla Fabrics',ig:'@teklafabrics',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h061',brand:'Nordic Knots',ig:'@nordicknots',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h062',brand:'Bolia',ig:'@boliacom',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h063',brand:'Lola Blankets',ig:'@lolablankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h064',brand:'Guests on Earth',ig:'@guestsonearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h065',brand:'Lifely Home',ig:'@lifelyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h066',brand:'Hauser Furniture',ig:'@hauserfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h067',brand:'Lamps Plus',ig:'@lampsplus',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h068',brand:'IKEA Canada',ig:'@ikeacanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h069',brand:'The Muskoka Sauna Co',ig:'@themuskokaaunaco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h070',brand:'Article',ig:'@article',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h071',brand:'The Brick',ig:'@brickwarehouse',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h072',brand:'Second Shop',ig:'@secondshopretail',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h073',brand:'The EH Frame',ig:'@the_ehframe',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h074',brand:'Awara Sleep',ig:'@awarasleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h075',brand:'Pura',ig:'@pura',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h076',brand:'Nolan Interior',ig:'@nolan_interior',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h077',brand:'Fable Home',ig:'@fablehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h078',brand:'Mellow Sleep',ig:'@mellow.sleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h079',brand:'Umbra',ig:'@umbra_design',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h080',brand:'Breville Canada',ig:'@brevillecanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h081',brand:'Hulala Home',ig:'@hulala_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h082',brand:'Ergonofis',ig:'@ergonofis',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h083',brand:'Branch Furniture',ig:'@branchfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h084',brand:'AromaTech',ig:'@aromatech',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h085',brand:'CB2 Canada',ig:'@cb2canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h086',brand:'KitchenAid Canada',ig:'@kitchenaid_ca',website:'',why:'Home & Lifestyle',status:'pitched',notes:'Outreach complete May 22',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h087',brand:'Eternity Modern Home',ig:'@eternitymodernhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h088',brand:'Blossholm',ig:'@blossholm',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h089',brand:'Panelux Canada',ig:'@paneluxcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h090',brand:'Fellow Products',ig:'@fellowproducts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h091',brand:'Year & Day',ig:'@yearandday',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h092',brand:'Anthropologie Home',ig:'@anthropologiehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h093',brand:'Cozy Earth',ig:'@cozyearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h094',brand:'Snowe Home',ig:'@snowehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h095',brand:'EQ3',ig:'@eq3',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h096',brand:'Casper Canada',ig:'@casper_canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h097',brand:'Sixpenny',ig:'@sixpennyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Travel & Hospitality
+  {id:'h098',brand:'The Maker Hotel',ig:'@themakerhotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h099',brand:'Elora Mill',ig:'@elora_mill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h100',brand:'Kat Florence Hotels',ig:'@katflorencehotels',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h101',brand:'The Liberty Inn',ig:'@thelibertyinn',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h102',brand:'The Scotsman Hotel Niagara',ig:'@thescotsmanhotelniagara',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h103',brand:"Anthony's Elora",ig:'@anthonyselora',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h104',brand:"Jayne's Cottages",ig:'@jaynescottages',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h105',brand:'The Ayrshire Hotel',ig:'@theayrshirehotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h106',brand:'Fairmont Le Château Frontenac',ig:'@fairmontfrontenac',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h107',brand:'The Hotel 1928',ig:'@thehotel1928',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h108',brand:'Le Capitole Hotel',ig:'@le.capitole.hotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h109',brand:'The High Acre',ig:'@thehighacre',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h110',brand:'Sparkling Hill Resort',ig:'@sparklinghill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h111',brand:'Monos',ig:'@monostravel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Food & Beverage
+  {id:'h112',brand:'Nespresso Canada',ig:'@nespresso.ca',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h113',brand:'Patrón',ig:'@patron',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Pets
+  {id:'h114',brand:'Litter-Robot',ig:'@thelitterrobot',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h115',brand:'Merrick Pet Care',ig:'@merrickpetcare',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Tech & Accessories
+  {id:'h116',brand:'YETI',ig:'@yeti',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h117',brand:'Oakywood',ig:'@oakywood',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h118',brand:'Ray-Ban Meta',ig:'@raybanmeta',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h119',brand:'Philips Hue',ig:'@philipshue',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h120',brand:'Osume Keys',ig:'@osumekeys',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h121',brand:'VibeTech Global',ig:'@vibetech_global',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h122',brand:'Marshall',ig:'@marshall',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'h123',brand:'Meraki Tech Global',ig:'@merakitechglobal',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+];
 let agencies = [];
 let brandBinId   = localStorage.getItem(BIN_KEY + '_brands') || null;
 let agencyBinId  = localStorage.getItem(BIN_KEY + '_agencies') || null;
@@ -399,7 +531,7 @@ async function showApp() {
   const [br, ar] = await Promise.all([loadBin(brandTag, bKey), loadBin(agencyTag, aKey)]);
   setLoading(70);
 
-  if (br.existed) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
+  if (br.existed && br.data.length > 0) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
   else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
 
   if (ar.existed) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
@@ -734,5 +866,6 @@ async function deleteEntry() {
   closeModal();
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
