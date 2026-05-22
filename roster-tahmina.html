@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>sub rosa — the roster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --crimson: #6b1a1a; --crimson-dark: #3d0d0d; --crimson-mid: #8c2222;
+  --parchment: #f3ede3; --parchment-2: #ece5d8; --parchment-3: #dfd7c8;
+  --cream: #faf7f2; --ink: #1c1612; --ink-2: #4a4540; --ink-3: #8a8278;
+  --border: rgba(107,26,26,0.13); --border-2: rgba(107,26,26,0.25);
+  --fs: 'Cormorant Garamond', Georgia, serif; --fn: 'DM Sans', system-ui, sans-serif; --r: 3px;
+}
+body { font-family: var(--fn); background: var(--parchment); color: var(--ink); min-height: 100vh; font-size: 13px; line-height: 1.5; }
+
+/* LOGIN */
+#screen-login { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--crimson-dark); padding:2rem; position:relative; overflow:hidden; }
+#screen-login::after  { content:''; position:absolute; width:600px; height:600px; border-radius:50%; border:1px solid rgba(242,237,228,0.05); top:-200px; right:-200px; pointer-events:none; }
+#screen-login::before { content:''; position:absolute; width:400px; height:400px; border-radius:50%; border:1px solid rgba(242,237,228,0.04); bottom:-100px; left:-150px; pointer-events:none; }
+.login-mark { font-family:var(--fs); font-style:italic; font-size:11px; letter-spacing:0.22em; color:rgba(242,237,228,0.28); text-transform:lowercase; position:absolute; top:2rem; left:50%; transform:translateX(-50%); white-space:nowrap; }
+.login-box { text-align:center; width:100%; max-width:300px; position:relative; }
+.login-emblem { width:56px; height:56px; border-radius:50%; background:var(--crimson); border:1px solid rgba(242,237,228,0.15); margin:0 auto 2rem; display:flex; align-items:center; justify-content:center; }
+.login-emblem span { font-family:var(--fs); font-style:italic; font-size:16px; color:rgba(242,237,228,0.65); }
+.login-h1 { font-family:var(--fs); font-style:italic; font-weight:300; font-size:52px; color:var(--parchment); line-height:0.95; margin-bottom:0.5rem; }
+.login-sub { font-family:var(--fs); font-style:italic; font-size:13px; color:rgba(242,237,228,0.35); margin-bottom:2.5rem; letter-spacing:0.06em; }
+.login-rule { width:28px; height:1px; background:rgba(242,237,228,0.15); margin:0 auto 2rem; }
+.login-field { margin-bottom:8px; }
+.login-field input { width:100%; padding:11px 14px; background:rgba(242,237,228,0.05); border:1px solid rgba(242,237,228,0.14); border-radius:var(--r); font-family:var(--fn); font-size:13px; color:var(--parchment); outline:none; transition:border-color 0.18s; }
+.login-field input::placeholder { color:rgba(242,237,228,0.25); }
+.login-field input:focus { border-color:rgba(242,237,228,0.38); }
+.login-cta { width:100%; margin-top:6px; padding:12px; background:var(--parchment); color:var(--crimson-dark); border:none; border-radius:var(--r); font-family:var(--fn); font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:lowercase; cursor:pointer; transition:background 0.15s; }
+.login-cta:hover { background:#fff; }
+.login-err { font-family:var(--fs); font-style:italic; font-size:12px; color:rgba(242,237,228,0.4); margin-top:10px; min-height:18px; }
+
+/* APP */
+#screen-app { display:none; min-height:100vh; flex-direction:column; }
+.topbar { background:var(--crimson-dark); height:50px; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(242,237,228,0.07); flex-shrink:0; position:sticky; top:0; z-index:50; }
+.topbar-left { display:flex; align-items:baseline; gap:10px; }
+.topbar-wordmark { font-family:var(--fs); font-style:italic; font-weight:300; font-size:22px; color:var(--parchment); }
+.topbar-divider { width:1px; height:14px; background:rgba(242,237,228,0.15); margin:0 2px; align-self:center; }
+.topbar-influencer { font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(242,237,228,0.45); }
+.topbar-right { display:flex; align-items:center; gap:10px; }
+.sync-note { font-family:var(--fs); font-style:italic; font-size:12px; color:rgba(242,237,228,0.28); }
+.btn-add { padding:7px 16px; background:transparent; border:1px solid rgba(242,237,228,0.22); border-radius:var(--r); color:rgba(242,237,228,0.75); font-family:var(--fn); font-size:12px; letter-spacing:0.06em; cursor:pointer; transition:all 0.15s; }
+.btn-add:hover { background:rgba(242,237,228,0.08); color:var(--parchment); }
+.btn-add:disabled { opacity:0.4; cursor:not-allowed; }
+
+/* SECTION TABS */
+.section-tabs { background:var(--crimson-dark); border-bottom:1px solid rgba(242,237,228,0.1); padding:0 2rem; display:flex; gap:0; flex-shrink:0; }
+.section-tab { padding:10px 20px; font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(242,237,228,0.35); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.15s; background:none; border-top:none; border-left:none; border-right:none; letter-spacing:0.02em; }
+.section-tab:hover { color:rgba(242,237,228,0.65); }
+.section-tab.active { color:var(--parchment); border-bottom-color:var(--parchment); }
+
+/* FILTER */
+.filterbar { background:var(--cream); border-bottom:1px solid var(--border); padding:9px 2rem; display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex-shrink:0; }
+.filterbar-label { font-family:var(--fs); font-style:italic; font-size:12px; color:var(--ink-3); }
+.filter-pill-wrap { display:flex; gap:6px; flex-wrap:wrap; }
+.filter-pill { padding:4px 11px; border-radius:20px; border:1px solid var(--border-2); background:transparent; font-family:var(--fn); font-size:11px; color:var(--ink-2); cursor:pointer; transition:all 0.13s; }
+.filter-pill:hover { background:var(--parchment-2); }
+.filter-pill.active { background:var(--crimson-dark); color:var(--parchment); border-color:var(--crimson-dark); }
+
+/* INTRO */
+.intro-band { padding:2rem 2rem 0; }
+.intro-heading { font-family:var(--fs); font-style:italic; font-size:34px; font-weight:300; color:var(--ink); line-height:1.1; margin-bottom:0.3rem; }
+.intro-desc { font-family:var(--fs); font-style:italic; font-size:15px; color:var(--ink-3); margin-bottom:1.5rem; }
+.intro-rule { height:1px; background:var(--border); }
+
+/* LIST */
+.section-view { display:none; flex:1; flex-direction:column; }
+.section-view.active { display:flex; }
+.brand-list { padding:0 2rem 5rem; flex:1; }
+.list-header { display:grid; gap:1rem; padding:14px 0.75rem 10px; border-bottom:1px solid var(--border-2); }
+.list-header.brands-header { grid-template-columns:2fr 1fr 1.5fr 40px; }
+.list-header.agencies-header { grid-template-columns:2fr 1fr 1fr 1.5fr 40px; }
+.list-header span { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); font-weight:500; }
+.brand-item { display:grid; align-items:center; gap:1rem; padding:18px 0.75rem; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.12s; border-radius:var(--r); }
+.brand-item.brands-row { grid-template-columns:2fr 1fr 1.5fr 40px; }
+.brand-item.agencies-row { grid-template-columns:2fr 1fr 1fr 1.5fr 40px; }
+.brand-item:hover { background:rgba(107,26,26,0.04); }
+.brand-item-name { font-family:var(--fs); font-size:20px; font-weight:400; color:var(--ink); line-height:1.1; }
+.brand-item-meta { font-size:11px; color:var(--ink-3); font-style:italic; font-family:var(--fs); margin-top:2px; }
+.brand-item-ig { display:inline-block; font-size:12px; color:var(--crimson); text-decoration:none; margin-top:3px; opacity:0.75; transition:opacity 0.12s; }
+.brand-item-ig:hover { opacity:1; }
+.badge { display:inline-block; padding:4px 10px; border-radius:20px; font-size:11px; font-family:var(--fs); font-style:italic; white-space:nowrap; }
+.badge-to-pitch { background:#f0ebff; color:#3d2070; }
+.badge-pitched  { background:#fdf4dc; color:#6b4500; }
+.badge-in-convo { background:#e4f1fb; color:#0c3d68; }
+.badge-working  { background:#e4f5ec; color:#1a5c30; }
+.badge-past     { background:#fdeee8; color:#6b2a10; }
+.badge-passed   { background:#eeede9; color:#5c5850; }
+/* Agency-specific status badges */
+.badge-to-reach  { background:#f0ebff; color:#3d2070; }
+.badge-reached   { background:#fdf4dc; color:#6b4500; }
+.badge-meeting   { background:#e4f1fb; color:#0c3d68; }
+.badge-on-roster { background:#e4f5ec; color:#1a5c30; }
+.badge-not-fit   { background:#eeede9; color:#5c5850; }
+.brand-notes { font-size:12px; color:var(--ink-3); font-style:italic; font-family:var(--fs); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.brand-arrow { justify-self:end; font-size:18px; color:var(--parchment-3); }
+.empty { text-align:center; padding:5rem 2rem; }
+.empty p { font-family:var(--fs); font-style:italic; font-size:22px; color:var(--ink-3); margin-bottom:0.5rem; }
+.empty small { font-size:12px; color:var(--ink-3); }
+.loading-bar { position:fixed; top:0; left:0; height:2px; background:var(--crimson); width:0; transition:width 0.3s; z-index:999; }
+
+/* MODAL */
+.modal-overlay { position:fixed; inset:0; background:rgba(28,22,18,0.6); z-index:200; display:none; align-items:flex-start; justify-content:flex-end; }
+.modal-overlay.open { display:flex; }
+.modal { width:460px; max-width:95vw; height:100vh; background:var(--cream); border-left:1px solid var(--border-2); display:flex; flex-direction:column; }
+.modal-top { background:var(--crimson-dark); padding:22px 24px 20px; flex-shrink:0; }
+.modal-top-row { display:flex; align-items:flex-start; justify-content:space-between; }
+.modal-heading { font-family:var(--fs); font-style:italic; font-weight:300; font-size:28px; color:var(--parchment); line-height:1; }
+.modal-subheading { font-size:11px; color:rgba(242,237,228,0.35); margin-top:4px; letter-spacing:0.08em; }
+.modal-close { background:none; border:none; color:rgba(242,237,228,0.4); font-size:22px; cursor:pointer; padding:0; line-height:1; transition:color 0.12s; }
+.modal-close:hover { color:var(--parchment); }
+.modal-body { padding:24px; flex:1; overflow-y:auto; }
+.m-section-label { font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--crimson-mid); font-weight:500; margin-bottom:12px; padding-bottom:7px; border-bottom:1px solid var(--border); }
+.form-section { margin-bottom:22px; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
+.field-row.full { grid-template-columns:1fr; }
+.field { display:flex; flex-direction:column; gap:4px; }
+.field label { font-size:11px; color:var(--ink-3); letter-spacing:0.04em; }
+.field input, .field select, .field textarea { padding:9px 11px; border:1px solid var(--border-2); border-radius:var(--r); background:var(--parchment); font-family:var(--fn); font-size:13px; color:var(--ink); outline:none; width:100%; transition:border-color 0.15s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color:var(--crimson); }
+.field textarea { resize:vertical; min-height:70px; line-height:1.5; }
+.status-picker { display:flex; gap:6px; flex-wrap:wrap; }
+.status-opt { padding:5px 12px; border-radius:20px; border:1px solid var(--border-2); background:transparent; font-family:var(--fs); font-style:italic; font-size:12px; color:var(--ink-2); cursor:pointer; transition:all 0.12s; }
+.status-opt.sel-to-pitch  { background:#f0ebff; color:#3d2070; border-color:#c9b8f5; }
+.status-opt.sel-pitched   { background:#fdf4dc; color:#6b4500; border-color:#e8c96a; }
+.status-opt.sel-in-convo  { background:#e4f1fb; color:#0c3d68; border-color:#92c4e8; }
+.status-opt.sel-working   { background:#e4f5ec; color:#1a5c30; border-color:#85d4a0; }
+.status-opt.sel-past      { background:#fdeee8; color:#6b2a10; border-color:#f0b090; }
+.status-opt.sel-passed    { background:#eeede9; color:#5c5850; border-color:#ccc9c0; }
+.status-opt.sel-to-reach  { background:#f0ebff; color:#3d2070; border-color:#c9b8f5; }
+.status-opt.sel-reached   { background:#fdf4dc; color:#6b4500; border-color:#e8c96a; }
+.status-opt.sel-meeting   { background:#e4f1fb; color:#0c3d68; border-color:#92c4e8; }
+.status-opt.sel-on-roster { background:#e4f5ec; color:#1a5c30; border-color:#85d4a0; }
+.status-opt.sel-not-fit   { background:#eeede9; color:#5c5850; border-color:#ccc9c0; }
+.modal-footer { padding:14px 24px; border-top:1px solid var(--border); display:flex; gap:8px; flex-shrink:0; background:var(--cream); }
+.btn-save { flex:1; padding:11px; background:var(--crimson-dark); color:var(--parchment); border:none; border-radius:var(--r); font-family:var(--fn); font-size:12px; font-weight:500; letter-spacing:0.1em; cursor:pointer; transition:background 0.15s; }
+.btn-save:hover { background:var(--crimson); }
+.btn-save:disabled { opacity:0.5; cursor:not-allowed; }
+.btn-del { padding:11px 14px; background:transparent; border:1px solid var(--border-2); border-radius:var(--r); font-family:var(--fn); font-size:12px; color:var(--ink-3); cursor:pointer; transition:all 0.15s; }
+.btn-del:hover { color:#b83030; border-color:#b83030; }
+
+/* STATUS DROPDOWN */
+.status-dropdown-wrap { position: relative; display: inline-block; width: 100%; }
+.status-dd-trigger { width: 100%; padding: 10px 14px; background: var(--parchment); border: 1px solid var(--border-2); border-radius: var(--r); display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--fn); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.status-dd-trigger:hover { border-color: var(--crimson); }
+.status-dd-arrow { margin-left: auto; font-size: 11px; color: var(--ink-3); transition: transform 0.15s; }
+.status-dd-trigger.open .status-dd-arrow { transform: rotate(180deg); }
+.status-dd-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: white; border: 1px solid var(--border-2); border-radius: var(--r); box-shadow: 0 4px 16px rgba(28,22,18,0.12); z-index: 100; overflow: hidden; display: none; }
+.status-dd-menu.open { display: block; }
+.status-dd-item { width: 100%; padding: 11px 14px; background: none; border: none; display: flex; align-items: center; gap: 12px; cursor: pointer; font-family: var(--fn); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-align: left; transition: background 0.1s; }
+.status-dd-item:hover { background: var(--parchment); }
+.status-dd-item.selected { background: var(--parchment-2); font-weight: 500; }
+.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot-empty  { background: transparent; border: 1.5px solid var(--parchment-3); }
+.dot-amber  { background: #e8c96a; }
+.dot-green  { background: #85d4a0; }
+.dot-purple { background: #c9b8f5; }
+.dot-blue   { background: #92c4e8; }
+.status-dd-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<div class="loading-bar" id="loading-bar"></div>
+
+<!-- LOGIN -->
+<div id="screen-login">
+  <span class="login-mark">sub rosa pr</span>
+  <div class="login-box">
+    <div class="login-emblem"><span>sr</span></div>
+    <h1 class="login-h1">the<br><em>roster</em></h1>
+    <p class="login-sub">a living list, kept under the rose.</p>
+    <div class="login-rule"></div>
+    <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email" /></div>
+    <div class="login-field"><input type="password" id="l-pass" placeholder="passcode" /></div>
+    <button class="login-cta" id="login-btn" onclick="doLogin()">enter</button>
+    <p class="login-err" id="l-err"></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="screen-app">
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-wordmark">the roster</span>
+      <div class="topbar-divider"></div>
+      <span class="topbar-influencer" id="t-name"></span>
+    </div>
+    <div class="topbar-right">
+      <span class="sync-note" id="sync-note">✓ synced</span>
+      <button class="btn-add" id="add-btn" onclick="openModal(null)">+ add</button>
+    </div>
+  </div>
+
+  <!-- SECTION TABS -->
+  <div class="section-tabs">
+    <button class="section-tab active" id="tab-brands" onclick="switchSection('brands')">brands</button>
+    <button class="section-tab" id="tab-agencies" onclick="switchSection('agencies')">pr agencies</button>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filterbar" id="filterbar-brands">
+    <span class="filterbar-label">filter —</span>
+    <div class="filter-pill-wrap">
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,'brands')">all</button>
+      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,'brands')">to pitch</button>
+      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,'brands')">pitched</button>
+      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,'brands')">in conversation</button>
+      <button class="filter-pill" data-status="working" onclick="setFilter(this,'brands')">working with</button>
+      <button class="filter-pill" data-status="past" onclick="setFilter(this,'brands')">past collab</button>
+      <button class="filter-pill" data-status="passed" onclick="setFilter(this,'brands')">passed</button>
+    </div>
+  </div>
+
+  <div class="filterbar" id="filterbar-agencies" style="display:none">
+    <span class="filterbar-label">filter —</span>
+    <div class="filter-pill-wrap">
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,'agencies')">all</button>
+      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,'agencies')">to reach out</button>
+      <button class="filter-pill" data-status="reached" onclick="setFilter(this,'agencies')">reached out</button>
+      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,'agencies')">meeting booked</button>
+      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,'agencies')">on roster</button>
+      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,'agencies')">not a fit</button>
+    </div>
+  </div>
+
+  <!-- BRANDS VIEW -->
+  <div class="section-view active" id="view-brands">
+    <div class="intro-band">
+      <h2 class="intro-heading">A living list of brands aligned<br>with my aesthetic and storytelling.</h2>
+      <p class="intro-desc">For outreach, partnerships, and long-term collaboration — updated by sub rosa.</p>
+      <div class="intro-rule"></div>
+    </div>
+    <div class="brand-list">
+      <div class="list-header brands-header">
+        <span>brand</span><span>status</span><span>notes from sub rosa</span><span></span>
+      </div>
+      <div id="list-brands"></div>
+      <div id="empty-brands" class="empty" style="display:none">
+        <p>nothing here yet.</p>
+        <small>add a brand you'd love to work with.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENCIES VIEW -->
+  <div class="section-view" id="view-agencies">
+    <div class="intro-band">
+      <h2 class="intro-heading">PR agencies worth knowing.</h2>
+      <p class="intro-desc">Agencies sub rosa is pitching on your behalf — tracked from first contact to roster.</p>
+      <div class="intro-rule"></div>
+    </div>
+    <div class="brand-list">
+      <div class="list-header agencies-header">
+        <span>agency</span><span>status</span><span>speciality</span><span>notes from sub rosa</span><span></span>
+      </div>
+      <div id="list-agencies"></div>
+      <div id="empty-agencies" class="empty" style="display:none">
+        <p>nothing here yet.</p>
+        <small>sub rosa will add agencies as they're identified.</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-row">
+        <div>
+          <div class="modal-heading" id="m-heading">new brand</div>
+          <div class="modal-subheading" id="m-sub">add to the roster</div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+    </div>
+    <div class="modal-body" id="modal-body-content"></div>
+    <div class="modal-footer">
+      <button class="btn-save" id="save-btn" onclick="saveEntry()">save to roster</button>
+      <button class="btn-del" id="btn-del" style="display:none" onclick="deleteEntry()">remove</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const INFLUENCER_NAME = 'Tahmina';
+const INFLUENCER_ID   = 'tahmina';
+const PASSCODE        = 'tahmina2024';
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+const MASTER_KEY = '$2a$10$niEjfkTssnALjnBJE9J4Q.54Zk5rYikfKdWDgz1BBL/rEWfCFz9k2';
+const API        = 'https://api.jsonbin.io/v3';
+const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
+
+let brands   = [
+  {id:'t001',brand:'Huda Beauty',ig:'@hudabeauty',website:'https://hudabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t002',brand:"L'Oréal Paris",ig:'@lorealparis',website:'https://loreal-paris.ca',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t003',brand:'Redken',ig:'@redken',website:'https://redken.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t004',brand:'YSL Beauty',ig:'@yslbeauty',website:'https://yslbeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t005',brand:'Rare Beauty',ig:'@rarebeauty',website:'https://rarebeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t006',brand:'Basma',ig:'@basmabeauty',website:'https://basmabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t007',brand:'Glossier',ig:'@glossier',website:'https://glossier.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t008',brand:'The Ordinary',ig:'@theordinary',website:'https://theordinary.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t009',brand:'Caudalie',ig:'@caudalie',website:'https://caudalie.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t010',brand:'Avène',ig:'@avene',website:'https://aveneusa.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t011',brand:'Merit Beauty',ig:'@meritbeauty',website:'https://meritbeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t012',brand:'Shiseido',ig:'@shiseido',website:'https://shiseido.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t013',brand:'OUAI',ig:'@theouai',website:'https://theouai.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t014',brand:'Olaplex',ig:'@olaplex',website:'https://olaplex.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t015',brand:'Oribe',ig:'@oribehair',website:'https://oribe.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t016',brand:'Kérastase',ig:'@kerastase_official',website:'https://kerastase.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t017',brand:'Amika',ig:'@amika',website:'https://amika.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t018',brand:'Aveda',ig:'@aveda',website:'https://aveda.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t019',brand:'Sephora',ig:'@sephora',website:'https://sephora.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t020',brand:'Laneige',ig:'@laneige_us',website:'https://laneige.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t021',brand:'ILIA Beauty',ig:'@iliabeauty',website:'https://iliabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t022',brand:'La Roche-Posay',ig:'@larocheposay',website:'https://laroche-posay.ca',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t023',brand:'Bioderma',ig:'@bioderma',website:'https://bioderma.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t024',brand:'CeraVe',ig:'@cerave',website:'https://cerave.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t025',brand:'MAC Cosmetics',ig:'@maccosmetics',website:'https://maccosmetics.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t026',brand:'Pixi Beauty',ig:'@pixibeauty',website:'https://pixibeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t027',brand:"L'Occitane",ig:'@loccitane',website:'https://loccitane.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t028',brand:'Gisou',ig:'@gisou',website:'https://gisou.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t029',brand:"Kiehl's",ig:'@kiehls',website:'https://kiehls.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t030',brand:'Aritzia',ig:'@aritzia',website:'https://aritzia.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t031',brand:'Anthropologie',ig:'@anthropologie',website:'https://anthropologie.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t032',brand:'Banana Republic',ig:'@bananarepublic',website:'https://bananarepublic.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t033',brand:'Mango',ig:'@mango',website:'https://mango.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t034',brand:'Lululemon',ig:'@lululemon',website:'https://lululemon.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t035',brand:'Abercrombie',ig:'@abercrombie',website:'https://abercrombie.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t036',brand:'Mejuri',ig:'@mejuri',website:'https://mejuri.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t037',brand:'Coach',ig:'@coach',website:'https://coach.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t038',brand:'Reformation',ig:'@reformation',website:'https://thereformation.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t039',brand:'Uniqlo',ig:'@uniqlo',website:'https://uniqlo.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t040',brand:"Levi's",ig:'@levis',website:'https://levi.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t041',brand:'Kotn',ig:'@kotn',website:'https://kotn.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t042',brand:'SKIMS',ig:'@skims',website:'https://skims.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t043',brand:'Spotify Canada',ig:'@spotifycanada',website:'https://spotify.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t044',brand:'Sony',ig:'@sony',website:'https://sony.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t045',brand:'Insta360',ig:'@insta360',website:'https://insta360.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t046',brand:'Canva',ig:'@canva',website:'https://canva.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t047',brand:'Adobe',ig:'@adobe',website:'https://adobe.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t048',brand:'Netflix',ig:'@netflix',website:'https://netflix.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t049',brand:'Amazon Canada',ig:'@amazonca',website:'https://amazon.ca',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t050',brand:'CapCut',ig:'@capcut',website:'https://capcut.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t051',brand:'Air Canada',ig:'@aircanada',website:'https://aircanada.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t052',brand:'Turkish Airlines',ig:'@turkishairlines',website:'https://turkishairlines.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t053',brand:'Qatar Airways',ig:'@qatarairways',website:'https://qatarairways.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t054',brand:'Emirates',ig:'@emirates',website:'https://emirates.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t055',brand:'Marriott',ig:'@marriottbonvoy',website:'https://marriott.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t056',brand:'Fairmont',ig:'@fairmonthotels',website:'https://fairmont.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t057',brand:'Four Seasons',ig:'@fourseasons',website:'https://fourseasons.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t058',brand:'Airbnb',ig:'@airbnb',website:'https://airbnb.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t059',brand:'DoorDash',ig:'@doordash',website:'https://doordash.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t060',brand:'Uber Eats',ig:'@ubereats',website:'https://ubereats.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t061',brand:'Nespresso',ig:'@nespresso',website:'https://nespresso.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t062',brand:'Headspace',ig:'@headspace',website:'https://headspace.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t063',brand:'Calm',ig:'@calm',website:'https://calm.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t064',brand:'Saje',ig:'@sajewellness',website:'https://saje.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+];
+let agencies = [];
+let brandBinId   = localStorage.getItem(BIN_KEY + '_brands') || null;
+let agencyBinId  = localStorage.getItem(BIN_KEY + '_agencies') || null;
+let editingId    = null;
+let activeSection = 'brands';
+let activeBrandFilter   = '';
+let activeAgencyFilter  = '';
+let selectedStatus = 'to-pitch';
+let saving = false;
+let modalMode = 'brands';
+
+const BRAND_STATUS_LABEL   = { 'to-pitch':'to pitch','pitched':'pitched','in-convo':'in conversation','working':'working with','past':'past collab','passed':'passed' };
+const BRAND_STATUS_CLASS   = { 'to-pitch':'badge-to-pitch','pitched':'badge-pitched','in-convo':'badge-in-convo','working':'badge-working','past':'badge-past','passed':'badge-passed' };
+const AGENCY_STATUS_LABEL  = { 'to-reach':'to reach out','reached':'reached out','meeting':'meeting booked','on-roster':'on roster','not-fit':'not a fit' };
+const AGENCY_STATUS_CLASS  = { 'to-reach':'badge-to-reach','reached':'badge-reached','meeting':'badge-meeting','on-roster':'badge-on-roster','not-fit':'badge-not-fit' };
+
+function setLoading(pct) {
+  document.getElementById('loading-bar').style.width = pct + '%';
+  if (pct >= 100) setTimeout(() => document.getElementById('loading-bar').style.width = '0', 400);
+}
+function setSyncNote(t) { document.getElementById('sync-note').textContent = t; }
+
+// ── JSONBIN ───────────────────────────────────────────
+async function loadBin(tag, localKey) {
+  let binId = localStorage.getItem(localKey) || null;
+  if (!binId) {
+    try {
+      const r = await fetch(`${API}/b?meta=true`, { headers: { 'X-Master-Key': MASTER_KEY, 'X-Bin-Meta': 'true' } });
+      const raw = await r.json();
+      const bins = Array.isArray(raw) ? raw : (raw.result || []);
+      const found = bins.find(b => (b.record?.name || b.metadata?.name) === tag);
+      if (found) { binId = found._id || found.record?.id; localStorage.setItem(localKey, binId); }
+    } catch(e) {}
+  }
+  if (binId) {
+    try {
+      const r = await fetch(`${API}/b/${binId}/latest`, { headers: { 'X-Master-Key': MASTER_KEY } });
+      const data = await r.json();
+      return { existed: true, data: data.record?.entries || [], binId };
+    } catch(e) {}
+  }
+  return { existed: false, data: [], binId: null };
+}
+
+async function saveBin(tag, localKey, entries, extra) {
+  let binId = localStorage.getItem(localKey) || null;
+  if (!binId) {
+    const r = await fetch(`${API}/b`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'X-Master-Key': MASTER_KEY, 'X-Bin-Name': tag, 'X-Bin-Private': 'true' },
+      body: JSON.stringify({ entries, influencer: INFLUENCER_NAME, id: INFLUENCER_ID, ...extra })
+    });
+    const d = await r.json();
+    binId = d.metadata?.id || d.record?.id || d._id;
+    if (binId) localStorage.setItem(localKey, binId);
+  } else {
+    await fetch(`${API}/b/${binId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type':'application/json', 'X-Master-Key': MASTER_KEY },
+      body: JSON.stringify({ entries, influencer: INFLUENCER_NAME, id: INFLUENCER_ID, updatedAt: new Date().toISOString(), ...extra })
+    });
+  }
+}
+
+// ── LOGIN ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem(`sr_auth_${INFLUENCER_ID}`) === '1') { showApp(); return; }
+  document.getElementById('l-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+  document.getElementById('l-email').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('l-pass').focus(); });
+});
+
+function doLogin() {
+  const email = document.getElementById('l-email').value.trim();
+  const pass  = document.getElementById('l-pass').value.trim();
+  const err   = document.getElementById('l-err');
+  if (!email) { err.textContent = 'please enter your email.'; return; }
+  if (pass !== PASSCODE) { err.textContent = 'incorrect passcode.'; return; }
+  localStorage.setItem(`sr_auth_${INFLUENCER_ID}`, '1');
+  document.getElementById('login-btn').textContent = 'loading…';
+  document.getElementById('login-btn').disabled = true;
+  showApp();
+}
+
+async function showApp() {
+  document.getElementById('screen-login').style.display = 'none';
+  const app = document.getElementById('screen-app');
+  app.style.display = 'flex'; app.style.flexDirection = 'column';
+  document.getElementById('t-name').textContent = INFLUENCER_NAME + '\u2019s roster';
+  setSyncNote('loading…'); setLoading(20);
+
+  const brandTag  = `sr-roster-${INFLUENCER_ID}`;
+  const agencyTag = `sr-agencies-${INFLUENCER_ID}`;
+  const bKey  = BIN_KEY + '_brands';
+  const aKey  = BIN_KEY + '_agencies';
+
+  const [br, ar] = await Promise.all([loadBin(brandTag, bKey), loadBin(agencyTag, aKey)]);
+  setLoading(70);
+
+  if (br.existed && br.data.length > 0) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
+  else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
+
+  if (ar.existed) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
+  else if (agencies.length > 0) { await saveBin(agencyTag, aKey, agencies, {}); }
+
+  setLoading(100); setSyncNote('✓ synced · changes sync automatically');
+  renderBrands(); renderAgencies();
+}
+
+// ── SECTION SWITCH ────────────────────────────────────
+function switchSection(s) {
+  activeSection = s;
+  document.getElementById('tab-brands').classList.toggle('active', s === 'brands');
+  document.getElementById('tab-agencies').classList.toggle('active', s === 'agencies');
+  document.getElementById('view-brands').classList.toggle('active', s === 'brands');
+  document.getElementById('view-agencies').classList.toggle('active', s === 'agencies');
+  document.getElementById('filterbar-brands').style.display   = s === 'brands'   ? 'flex' : 'none';
+  document.getElementById('filterbar-agencies').style.display = s === 'agencies' ? 'flex' : 'none';
+  document.getElementById('add-btn').textContent = s === 'brands' ? '+ add brand' : '+ add agency';
+}
+
+// ── FILTER ────────────────────────────────────────────
+function setFilter(btn, section) {
+  btn.closest('.filter-pill-wrap').querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  if (section === 'brands') { activeBrandFilter = btn.dataset.status; renderBrands(); }
+  else { activeAgencyFilter = btn.dataset.status; renderAgencies(); }
+}
+
+function esc(s) { if (!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── RENDER BRANDS ─────────────────────────────────────
+function renderBrands() {
+  const filtered = brands.filter(e => !activeBrandFilter || e.status === activeBrandFilter);
+  const body = document.getElementById('list-brands');
+  const empty = document.getElementById('empty-brands');
+  if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  body.innerHTML = filtered.map(e => `
+    <div class="brand-item brands-row" onclick="openModal('${e.id}','brands')">
+      <div>
+        <div class="brand-item-name">${esc(e.brand)||'—'}</div>
+        ${e.ig ? `<a class="brand-item-ig" href="https://instagram.com/${e.ig.replace('@','')}" target="_blank" onclick="event.stopPropagation()">↗ ${esc(e.ig)}</a>` : ''}
+      </div>
+      <div><span class="badge ${BRAND_STATUS_CLASS[e.status]||''}">${BRAND_STATUS_LABEL[e.status]||e.status}</span></div>
+      <div class="brand-notes">${esc(e.notes)||'—'}</div>
+      <div class="brand-arrow">›</div>
+    </div>
+  `).join('');
+}
+
+// ── RENDER AGENCIES ───────────────────────────────────
+function renderAgencies() {
+  const filtered = agencies.filter(e => !activeAgencyFilter || e.status === activeAgencyFilter);
+  const body = document.getElementById('list-agencies');
+  const empty = document.getElementById('empty-agencies');
+  if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  body.innerHTML = filtered.map(e => `
+    <div class="brand-item agencies-row" onclick="openModal('${e.id}','agencies')">
+      <div>
+        <div class="brand-item-name">${esc(e.name)||'—'}</div>
+        ${e.website ? `<a class="brand-item-ig" href="${esc(e.website)}" target="_blank" onclick="event.stopPropagation()">↗ website</a>` : ''}
+      </div>
+      <div><span class="badge ${AGENCY_STATUS_CLASS[e.status]||''}">${AGENCY_STATUS_LABEL[e.status]||e.status}</span></div>
+      <div class="brand-item-meta">${esc(e.speciality)||'—'}</div>
+      <div class="brand-notes">${esc(e.notes)||'—'}</div>
+      <div class="brand-arrow">›</div>
+    </div>
+  `).join('');
+}
+
+// ── MODAL ─────────────────────────────────────────────
+function openModal(id, section) {
+  editingId = id;
+  modalMode = section || activeSection;
+  document.getElementById('overlay').classList.add('open');
+  const delBtn = document.getElementById('btn-del');
+
+  if (id && modalMode === 'brands') {
+    const e = brands.find(x => x.id === id);
+    if (!e) return;
+    document.getElementById('m-heading').textContent = e.brand || 'edit';
+    document.getElementById('m-sub').textContent = 'edit brand details';
+    document.getElementById('modal-body-content').innerHTML = brandForm(e);
+    setStatusPicker(e.status || 'to-pitch', 'brands');
+    delBtn.style.display = 'block';
+  } else if (id && modalMode === 'agencies') {
+    const e = agencies.find(x => x.id === id);
+    if (!e) return;
+    document.getElementById('m-heading').textContent = e.name || 'edit';
+    document.getElementById('m-sub').textContent = 'edit agency details';
+    document.getElementById('modal-body-content').innerHTML = agencyForm(e);
+    setStatusPicker(e.status || 'to-reach', 'agencies');
+    delBtn.style.display = 'block';
+  } else if (modalMode === 'brands') {
+    document.getElementById('m-heading').textContent = 'new brand';
+    document.getElementById('m-sub').textContent = 'add to the roster';
+    document.getElementById('modal-body-content').innerHTML = brandForm(null);
+    setStatusPicker('to-pitch', 'brands');
+    delBtn.style.display = 'none';
+  } else {
+    document.getElementById('m-heading').textContent = 'new agency';
+    document.getElementById('m-sub').textContent = 'add to pr agencies';
+    document.getElementById('modal-body-content').innerHTML = agencyForm(null);
+    setStatusPicker('to-reach', 'agencies');
+    delBtn.style.display = 'none';
+  }
+}
+
+function brandForm(e) {
+  return `
+    <div class="form-section">
+      <div class="m-section-label">brand</div>
+      <div class="field-row">
+        <div class="field"><label>brand name</label><input type="text" id="f-brand" placeholder="e.g. Aesop" value="${esc(e?.brand||'')}" /></div>
+        <div class="field"><label>instagram</label><input type="text" id="f-ig" placeholder="@handle" value="${esc(e?.ig||'')}" /></div>
+      </div>
+      <div class="field-row full">
+        <div class="field"><label>website</label><input type="url" id="f-website" placeholder="https://..." value="${esc(e?.website||'')}" /></div>
+      </div>
+      <div class="field-row full">
+        <div class="field"><label>why this brand?</label><textarea id="f-why" placeholder="Why do you want to work with them?">${esc(e?.why||'')}</textarea></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="m-section-label">status — updated by sub rosa</div>
+      <div class="status-dropdown-wrap" id="status-picker">
+        <button class="status-dd-trigger" onclick="toggleDropdown(event)" id="dd-trigger">
+          <span class="status-dd-dot" id="dd-dot"></span>
+          <span class="status-dd-label" id="dd-label">to pitch</span>
+          <span class="status-dd-arrow">&#8963;</span>
+        </button>
+        <div class="status-dd-menu" id="dd-menu">
+          <button class="status-dd-item" data-val="to-pitch" onclick="pickStatus(this)"><span class="dot dot-empty"></span>TO PITCH</button>
+          <button class="status-dd-item" data-val="pitched" onclick="pickStatus(this)"><span class="dot dot-amber"></span>PITCHED</button>
+          <button class="status-dd-item" data-val="in-convo" onclick="pickStatus(this)"><span class="dot dot-amber"></span>IN CONVERSATION</button>
+          <button class="status-dd-item" data-val="working" onclick="pickStatus(this)"><span class="dot dot-green"></span>WORKING WITH</button>
+          <button class="status-dd-item" data-val="past" onclick="pickStatus(this)"><span class="dot dot-purple"></span>PAST COLLAB</button>
+          <button class="status-dd-item" data-val="passed" onclick="pickStatus(this)"><span class="dot dot-empty"></span>PASSED</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="m-section-label">sub rosa notes</div>
+      <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Updates from sub rosa…">${esc(e?.notes||'')}</textarea></div></div>
+      <div class="field-row">
+        <div class="field"><label>contact name</label><input type="text" id="f-contact" placeholder="Brand contact" value="${esc(e?.contact||'')}" /></div>
+        <div class="field"><label>agreed amount</label><input type="text" id="f-amount" placeholder="$0" value="${esc(e?.amount||'')}" /></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>deliverables</label><input type="text" id="f-deliverables" placeholder="e.g. 1 Reel, 3 Stories" value="${esc(e?.deliverables||'')}" /></div>
+        <div class="field"><label>due date</label><input type="date" id="f-due" value="${esc(e?.due||'')}" /></div>
+      </div>
+    </div>`;
+}
+
+function agencyForm(e) {
+  return `
+    <div class="form-section">
+      <div class="m-section-label">agency</div>
+      <div class="field-row">
+        <div class="field"><label>agency name</label><input type="text" id="f-name" placeholder="e.g. Weber Shandwick" value="${esc(e?.name||'')}" /></div>
+        <div class="field"><label>speciality</label><input type="text" id="f-speciality" placeholder="e.g. Beauty, Lifestyle" value="${esc(e?.speciality||'')}" /></div>
+      </div>
+      <div class="field-row full">
+        <div class="field"><label>website</label><input type="url" id="f-website" placeholder="https://..." value="${esc(e?.website||'')}" /></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>city</label><input type="text" id="f-city" placeholder="e.g. Toronto" value="${esc(e?.city||'')}" /></div>
+        <div class="field"><label>instagram</label><input type="text" id="f-ig" placeholder="@handle" value="${esc(e?.ig||'')}" /></div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="m-section-label">status — updated by sub rosa</div>
+      <div class="status-dropdown-wrap" id="status-picker">
+        <button class="status-dd-trigger" onclick="toggleDropdown(event)" id="dd-trigger">
+          <span class="status-dd-dot" id="dd-dot"></span>
+          <span class="status-dd-label" id="dd-label">to reach out</span>
+          <span class="status-dd-arrow">&#8963;</span>
+        </button>
+        <div class="status-dd-menu" id="dd-menu">
+        <button class="status-dd-item" data-val="to-reach" onclick="pickStatus(this)"><span class="dot dot-empty"></span>TO REACH OUT</button>
+        <button class="status-dd-item" data-val="reached" onclick="pickStatus(this)"><span class="dot dot-amber"></span>REACHED OUT</button>
+        <button class="status-dd-item" data-val="meeting" onclick="pickStatus(this)"><span class="dot dot-amber"></span>MEETING BOOKED</button>
+        <button class="status-dd-item" data-val="on-roster" onclick="pickStatus(this)"><span class="dot dot-green"></span>ON ROSTER</button>
+        <button class="status-dd-item" data-val="not-fit" onclick="pickStatus(this)"><span class="dot dot-empty"></span>NOT A FIT</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="m-section-label">sub rosa notes</div>
+      <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Notes on the agency — who to contact, what they rep, conversation history…">${esc(e?.notes||'')}</textarea></div></div>
+      <div class="field-row">
+        <div class="field"><label>contact name</label><input type="text" id="f-contact" placeholder="Key contact" value="${esc(e?.contact||'')}" /></div>
+        <div class="field"><label>contact email</label><input type="email" id="f-email" placeholder="email@agency.com" value="${esc(e?.email||'')}" /></div>
+      </div>
+      <div class="field-row full">
+        <div class="field"><label>brands they represent</label><input type="text" id="f-brands-repped" placeholder="e.g. L'Oréal, Maybelline, Garnier" value="${esc(e?.brandsRepped||'')}" /></div>
+      </div>
+    </div>`;
+}
+
+function closeModal() { document.getElementById('overlay').classList.remove('open'); editingId = null; }
+function overlayClick(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
+
+function toggleDropdown(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('dd-menu');
+  const trigger = document.getElementById('dd-trigger');
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  trigger.classList.toggle('open', !isOpen);
+}
+document.addEventListener('click', () => {
+  const menu = document.getElementById('dd-menu');
+  const trigger = document.getElementById('dd-trigger');
+  if (menu) { menu.classList.remove('open'); }
+  if (trigger) { trigger.classList.remove('open'); }
+});
+const DOT_COLORS = {
+  'to-pitch':'transparent','pitched':'#e8c96a','in-convo':'#e8c96a','working':'#85d4a0','past':'#c9b8f5','passed':'transparent',
+  'to-reach':'transparent','reached':'#e8c96a','meeting':'#e8c96a','on-roster':'#85d4a0','not-fit':'transparent'
+};
+const DOT_BORDER = ['to-pitch','passed','to-reach','not-fit'];
+const LABEL_MAP = {
+  'to-pitch':'TO PITCH','pitched':'PITCHED','in-convo':'IN CONVERSATION','working':'WORKING WITH','past':'PAST COLLAB','passed':'PASSED',
+  'to-reach':'TO REACH OUT','reached':'REACHED OUT','meeting':'MEETING BOOKED','on-roster':'ON ROSTER','not-fit':'NOT A FIT'
+};
+function setStatusPicker(val, mode) {
+  selectedStatus = val;
+  setTimeout(() => {
+    const dot = document.getElementById('dd-dot');
+    const label = document.getElementById('dd-label');
+    if (dot && label) {
+      dot.style.background = DOT_COLORS[val] || 'transparent';
+      dot.style.border = DOT_BORDER.includes(val) ? '1.5px solid #c5bfb5' : 'none';
+      label.textContent = LABEL_MAP[val] || val;
+    }
+    document.querySelectorAll('#status-picker .status-dd-item').forEach(btn => {
+      btn.classList.toggle('selected', btn.dataset.val === val);
+    });
+  }, 10);
+}
+function pickStatus(btn) {
+  selectedStatus = btn.dataset.val;
+  const dot = document.getElementById('dd-dot');
+  const label = document.getElementById('dd-label');
+  if (dot && label) {
+    dot.style.background = DOT_COLORS[selectedStatus] || 'transparent';
+    dot.style.border = DOT_BORDER.includes(selectedStatus) ? '1.5px solid #c5bfb5' : 'none';
+    label.textContent = LABEL_MAP[selectedStatus] || selectedStatus;
+  }
+  document.querySelectorAll('#status-picker .status-dd-item').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const menu = document.getElementById('dd-menu');
+  const trigger = document.getElementById('dd-trigger');
+  if (menu) menu.classList.remove('open');
+  if (trigger) trigger.classList.remove('open');
+}
+
+// ── SAVE / DELETE ─────────────────────────────────────
+async function saveEntry() {
+  if (saving) return;
+  saving = true;
+  const btn = document.getElementById('save-btn');
+  btn.textContent = 'saving…'; btn.disabled = true;
+  setSyncNote('↻ saving…'); setLoading(50);
+
+  if (modalMode === 'brands') {
+    const brand = document.getElementById('f-brand')?.value.trim();
+    if (!brand) { alert('Please enter a brand name.'); saving = false; btn.textContent = 'save to roster'; btn.disabled = false; return; }
+    const data = {
+      brand, ig: document.getElementById('f-ig')?.value.trim(),
+      website: document.getElementById('f-website')?.value.trim(),
+      why: document.getElementById('f-why')?.value.trim(),
+      status: selectedStatus,
+      notes: document.getElementById('f-notes')?.value.trim(),
+      contact: document.getElementById('f-contact')?.value.trim(),
+      amount: document.getElementById('f-amount')?.value.trim(),
+      deliverables: document.getElementById('f-deliverables')?.value.trim(),
+      due: document.getElementById('f-due')?.value,
+      updatedAt: new Date().toISOString(),
+    };
+    if (editingId) {
+      const idx = brands.findIndex(e => e.id === editingId);
+      if (idx > -1) brands[idx] = { ...brands[idx], ...data };
+    } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; brands.unshift(data); }
+    await saveBin(`sr-roster-${INFLUENCER_ID}`, BIN_KEY + '_brands', brands, {});
+    renderBrands();
+  } else {
+    const name = document.getElementById('f-name')?.value.trim();
+    if (!name) { alert('Please enter an agency name.'); saving = false; btn.textContent = 'save to roster'; btn.disabled = false; return; }
+    const data = {
+      name, speciality: document.getElementById('f-speciality')?.value.trim(),
+      website: document.getElementById('f-website')?.value.trim(),
+      city: document.getElementById('f-city')?.value.trim(),
+      ig: document.getElementById('f-ig')?.value.trim(),
+      status: selectedStatus,
+      notes: document.getElementById('f-notes')?.value.trim(),
+      contact: document.getElementById('f-contact')?.value.trim(),
+      email: document.getElementById('f-email')?.value.trim(),
+      brandsRepped: document.getElementById('f-brands-repped')?.value.trim(),
+      updatedAt: new Date().toISOString(),
+    };
+    if (editingId) {
+      const idx = agencies.findIndex(e => e.id === editingId);
+      if (idx > -1) agencies[idx] = { ...agencies[idx], ...data };
+    } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; agencies.unshift(data); }
+    await saveBin(`sr-agencies-${INFLUENCER_ID}`, BIN_KEY + '_agencies', agencies, {});
+    renderAgencies();
+  }
+
+  setLoading(100); setSyncNote('✓ synced · updated just now');
+  saving = false; btn.textContent = 'save to roster'; btn.disabled = false;
+  closeModal();
+}
+
+async function deleteEntry() {
+  if (!editingId || !confirm('Remove this entry?')) return;
+  setSyncNote('↻ saving…'); setLoading(50);
+  if (modalMode === 'brands') {
+    brands = brands.filter(e => e.id !== editingId);
+    await saveBin(`sr-roster-${INFLUENCER_ID}`, BIN_KEY + '_brands', brands, {});
+    renderBrands();
+  } else {
+    agencies = agencies.filter(e => e.id !== editingId);
+    await saveBin(`sr-agencies-${INFLUENCER_ID}`, BIN_KEY + '_agencies', agencies, {});
+    renderAgencies();
+  }
+  setLoading(100); setSyncNote('✓ synced · updated just now');
+  closeModal();
+}
+</script>
+</body>
+</html>
