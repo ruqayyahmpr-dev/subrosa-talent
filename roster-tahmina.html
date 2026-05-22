@@ -291,16 +291,81 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 
 <script>
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const INFLUENCER_NAME = 'Haylé';
-const INFLUENCER_ID   = 'hayle';
-const PASSCODE        = 'hayle2026';
+const INFLUENCER_NAME = 'Tahmina';
+const INFLUENCER_ID   = 'tahmina';
+const PASSCODE        = 'tahmina2026';
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 const MASTER_KEY = '$2a$10$niEjfkTssnALjnBJE9J4Q.54Zk5rYikfKdWDgz1BBL/rEWfCFz9k2';
 const API        = 'https://api.jsonbin.io/v3';
 const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
-let brands   = [];
+let brands   = [
+  {id:'t001',brand:'Huda Beauty',ig:'@hudabeauty',website:'https://hudabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t002',brand:"L'Oréal Paris",ig:'@lorealparis',website:'https://loreal-paris.ca',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t003',brand:'Redken',ig:'@redken',website:'https://redken.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t004',brand:'YSL Beauty',ig:'@yslbeauty',website:'https://yslbeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t005',brand:'Rare Beauty',ig:'@rarebeauty',website:'https://rarebeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t006',brand:'Basma',ig:'@basmabeauty',website:'https://basmabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t007',brand:'Glossier',ig:'@glossier',website:'https://glossier.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t008',brand:'The Ordinary',ig:'@theordinary',website:'https://theordinary.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t009',brand:'Caudalie',ig:'@caudalie',website:'https://caudalie.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t010',brand:'Avène',ig:'@avene',website:'https://aveneusa.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t011',brand:'Merit Beauty',ig:'@meritbeauty',website:'https://meritbeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t012',brand:'Shiseido',ig:'@shiseido',website:'https://shiseido.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t013',brand:'OUAI',ig:'@theouai',website:'https://theouai.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t014',brand:'Olaplex',ig:'@olaplex',website:'https://olaplex.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t015',brand:'Oribe',ig:'@oribehair',website:'https://oribe.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t016',brand:'Kérastase',ig:'@kerastase_official',website:'https://kerastase.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t017',brand:'Amika',ig:'@amika',website:'https://amika.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t018',brand:'Aveda',ig:'@aveda',website:'https://aveda.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t019',brand:'Sephora',ig:'@sephora',website:'https://sephora.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t020',brand:'Laneige',ig:'@laneige_us',website:'https://laneige.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t021',brand:'ILIA Beauty',ig:'@iliabeauty',website:'https://iliabeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t022',brand:'La Roche-Posay',ig:'@larocheposay',website:'https://laroche-posay.ca',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t023',brand:'Bioderma',ig:'@bioderma',website:'https://bioderma.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t024',brand:'CeraVe',ig:'@cerave',website:'https://cerave.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t025',brand:'MAC Cosmetics',ig:'@maccosmetics',website:'https://maccosmetics.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t026',brand:'Pixi Beauty',ig:'@pixibeauty',website:'https://pixibeauty.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t027',brand:"L'Occitane",ig:'@loccitane',website:'https://loccitane.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t028',brand:'Gisou',ig:'@gisou',website:'https://gisou.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t029',brand:"Kiehl's",ig:'@kiehls',website:'https://kiehls.com',why:'Beauty / Hair / Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t030',brand:'Aritzia',ig:'@aritzia',website:'https://aritzia.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t031',brand:'Anthropologie',ig:'@anthropologie',website:'https://anthropologie.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t032',brand:'Banana Republic',ig:'@bananarepublic',website:'https://bananarepublic.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t033',brand:'Mango',ig:'@mango',website:'https://mango.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t034',brand:'Lululemon',ig:'@lululemon',website:'https://lululemon.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t035',brand:'Abercrombie',ig:'@abercrombie',website:'https://abercrombie.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t036',brand:'Mejuri',ig:'@mejuri',website:'https://mejuri.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t037',brand:'Coach',ig:'@coach',website:'https://coach.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t038',brand:'Reformation',ig:'@reformation',website:'https://thereformation.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t039',brand:'Uniqlo',ig:'@uniqlo',website:'https://uniqlo.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t040',brand:"Levi's",ig:'@levis',website:'https://levi.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t041',brand:'Kotn',ig:'@kotn',website:'https://kotn.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t042',brand:'SKIMS',ig:'@skims',website:'https://skims.com',why:'Fashion / Lifestyle',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t043',brand:'Spotify Canada',ig:'@spotifycanada',website:'https://spotify.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t044',brand:'Sony',ig:'@sony',website:'https://sony.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t045',brand:'Insta360',ig:'@insta360',website:'https://insta360.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t046',brand:'Canva',ig:'@canva',website:'https://canva.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t047',brand:'Adobe',ig:'@adobe',website:'https://adobe.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t048',brand:'Netflix',ig:'@netflix',website:'https://netflix.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t049',brand:'Amazon Canada',ig:'@amazonca',website:'https://amazon.ca',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t050',brand:'CapCut',ig:'@capcut',website:'https://capcut.com',why:'Tech / Media',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t051',brand:'Air Canada',ig:'@aircanada',website:'https://aircanada.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t052',brand:'Turkish Airlines',ig:'@turkishairlines',website:'https://turkishairlines.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t053',brand:'Qatar Airways',ig:'@qatarairways',website:'https://qatarairways.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t054',brand:'Emirates',ig:'@emirates',website:'https://emirates.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t055',brand:'Marriott',ig:'@marriottbonvoy',website:'https://marriott.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t056',brand:'Fairmont',ig:'@fairmonthotels',website:'https://fairmont.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t057',brand:'Four Seasons',ig:'@fourseasons',website:'https://fourseasons.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t058',brand:'Airbnb',ig:'@airbnb',website:'https://airbnb.com',why:'Travel / Hospitality',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t059',brand:'DoorDash',ig:'@doordash',website:'https://doordash.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t060',brand:'Uber Eats',ig:'@ubereats',website:'https://ubereats.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t061',brand:'Nespresso',ig:'@nespresso',website:'https://nespresso.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t062',brand:'Headspace',ig:'@headspace',website:'https://headspace.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t063',brand:'Calm',ig:'@calm',website:'https://calm.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'t064',brand:'Saje',ig:'@sajewellness',website:'https://saje.com',why:'Food / Wellness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+];
 let agencies = [];
 let brandBinId   = localStorage.getItem(BIN_KEY + '_brands') || null;
 let agencyBinId  = localStorage.getItem(BIN_KEY + '_agencies') || null;
@@ -399,7 +464,7 @@ async function showApp() {
   const [br, ar] = await Promise.all([loadBin(brandTag, bKey), loadBin(agencyTag, aKey)]);
   setLoading(70);
 
-  if (br.existed) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
+  if (br.existed && br.data.length > 0) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
   else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
 
   if (ar.existed) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
