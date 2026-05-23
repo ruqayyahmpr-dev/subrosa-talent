@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0058)file:///Users/ruqayyahmohammed/Downloads/roster-mahsa.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>sub rosa — the list</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./roster-mahsa_files/css2" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -177,8 +177,8 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
     <h1 class="login-h1">the<br><em>list</em></h1>
     <p class="login-sub">a living list, kept under the rose.</p>
     <div class="login-rule"></div>
-    <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email" /></div>
-    <div class="login-field"><input type="password" id="l-pass" placeholder="passcode" /></div>
+    <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email"></div>
+    <div class="login-field"><input type="password" id="l-pass" placeholder="passcode"></div>
     <button class="login-cta" id="login-btn" onclick="doLogin()">enter</button>
     <p class="login-err" id="l-err"></p>
   </div>
@@ -200,33 +200,33 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 
   <!-- SECTION TABS -->
   <div class="section-tabs">
-    <button class="section-tab active" id="tab-brands" onclick="switchSection('brands')">brands</button>
-    <button class="section-tab" id="tab-agencies" onclick="switchSection('agencies')">pr agencies</button>
+    <button class="section-tab active" id="tab-brands" onclick="switchSection(&#39;brands&#39;)">brands</button>
+    <button class="section-tab" id="tab-agencies" onclick="switchSection(&#39;agencies&#39;)">pr agencies</button>
   </div>
 
   <!-- FILTER BAR -->
   <div class="filterbar" id="filterbar-brands">
     <span class="filterbar-label">filter —</span>
     <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'brands')">all</button>
-      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,'brands')">to pitch</button>
-      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,'brands')">pitched</button>
-      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,'brands')">in conversation</button>
-      <button class="filter-pill" data-status="working" onclick="setFilter(this,'brands')">working with</button>
-      <button class="filter-pill" data-status="past" onclick="setFilter(this,'brands')">past collab</button>
-      <button class="filter-pill" data-status="passed" onclick="setFilter(this,'brands')">passed</button>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,&#39;brands&#39;)">all</button>
+      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,&#39;brands&#39;)">to pitch</button>
+      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,&#39;brands&#39;)">pitched</button>
+      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,&#39;brands&#39;)">in conversation</button>
+      <button class="filter-pill" data-status="working" onclick="setFilter(this,&#39;brands&#39;)">working with</button>
+      <button class="filter-pill" data-status="past" onclick="setFilter(this,&#39;brands&#39;)">past collab</button>
+      <button class="filter-pill" data-status="passed" onclick="setFilter(this,&#39;brands&#39;)">passed</button>
     </div>
   </div>
 
   <div class="filterbar" id="filterbar-agencies" style="display:none">
     <span class="filterbar-label">filter —</span>
     <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'agencies')">all</button>
-      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,'agencies')">to reach out</button>
-      <button class="filter-pill" data-status="reached" onclick="setFilter(this,'agencies')">reached out</button>
-      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,'agencies')">meeting booked</button>
-      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,'agencies')">on roster</button>
-      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,'agencies')">not a fit</button>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this,&#39;agencies&#39;)">all</button>
+      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,&#39;agencies&#39;)">to reach out</button>
+      <button class="filter-pill" data-status="reached" onclick="setFilter(this,&#39;agencies&#39;)">reached out</button>
+      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,&#39;agencies&#39;)">meeting booked</button>
+      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,&#39;agencies&#39;)">on roster</button>
+      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,&#39;agencies&#39;)">not a fit</button>
     </div>
   </div>
 
@@ -300,7 +300,26 @@ const MASTER_KEY = '$2a$10$niEjfkTssnALjnBJE9J4Q.54Zk5rYikfKdWDgz1BBL/rEWfCFz9k2
 const API        = 'https://api.jsonbin.io/v3';
 const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
-let brands   = [];
+let brands = [
+  // Fitness
+  {id:'m001',brand:'Azur Fit',ig:'@azurfit',website:'https://azurfit.com',why:'Fitness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Beauty & Skincare (from Haylé's list)
+  {id:'m002',brand:'Aesop',ig:'@aesop',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m003',brand:'OSEA Malibu',ig:'@oseamalibu',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m004',brand:'Salt & Stone',ig:'@saltandstone',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m005',brand:'Jo Malone London',ig:'@jomalonelondon',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m006',brand:'Grown Alchemist',ig:'@grownalchemist',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m007',brand:'Dermalogica Canada',ig:'@dermalogicacanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m008',brand:'Estée Lauder Canada',ig:'@esteelaudercanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m009',brand:'Phlur',ig:'@phlur',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m010',brand:'Beautiful Earth Boutique',ig:'@beautifulearthboutique',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m011',brand:'Bonjout Beauty',ig:'@bonjoutbeauty',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m012',brand:'OMY Laboratoires',ig:'@omylaboratoires',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  // Wellness (from Haylé's list)
+  {id:'m013',brand:'Saje Wellness',ig:'@sajewellness',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m014',brand:'Hatch',ig:'@hatchforsleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+  {id:'m015',brand:'CanPrev',ig:'@canprev',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+];
 let agencies = [
   {id:'a001',name:'Burson Canada',speciality:'PR & Communications',website:'https://burson.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
   {id:'a002',name:'Langton PR',speciality:'PR & Communications',website:'https://langtonpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
@@ -415,7 +434,7 @@ async function showApp() {
   const [br, ar] = await Promise.all([loadBin(brandTag, bKey), loadBin(agencyTag, aKey)]);
   setLoading(70);
 
-  if (br.existed) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
+  if (br.existed && br.data.length > 0) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
   else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
 
   if (ar.existed && ar.data.length > 0) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
@@ -750,5 +769,6 @@ async function deleteEntry() {
   closeModal();
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
