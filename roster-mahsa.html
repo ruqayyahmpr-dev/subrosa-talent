@@ -296,7 +296,6 @@ const INFLUENCER_ID   = 'mahsa';
 const PASSCODE        = 'mahsa2026';
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
 let brands = [
   // Fitness
@@ -335,8 +334,6 @@ let agencies = [
   {id:'a014',name:'Pomp & Circumstance',speciality:'PR & Lifestyle',website:'https://pompandcircumstancepr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
   {id:'a015',name:'PR Axis',speciality:'PR & Communications',website:'https://praxis.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
 ];
-let brandBinId   = localStorage.getItem(BIN_KEY + '_brands') || null;
-let agencyBinId  = localStorage.getItem(BIN_KEY + '_agencies') || null;
 let editingId    = null;
 let activeSection = 'brands';
 let activeBrandFilter   = '';
@@ -413,48 +410,17 @@ function doLogin() {
   showApp();
 }
 
-async function showApp() {
+function showApp() {
   document.getElementById('screen-login').style.display = 'none';
   const app = document.getElementById('screen-app');
-  app.style.display = 'flex'; app.style.flexDirection = 'column';
-  document.getElementById('t-name').textContent = INFLUENCER_NAME + '\u2019s roster';
-  setSyncNote('loading…'); setLoading(20);
-
-  const brandTag  = `sr-roster-${INFLUENCER_ID}`;
-  const agencyTag = `sr-agencies-${INFLUENCER_ID}`;
-  const bKey  = BIN_KEY + '_brands';
-  const aKey  = BIN_KEY + '_agencies';
-
-  const [br, ar] = await Promise.all([loadBin(brandTag, bKey), loadBin(agencyTag, aKey)]);
-  setLoading(70);
-
-  if (br.existed && br.data.length > 0) { brands = br.data; if (br.binId) localStorage.setItem(bKey, br.binId); }
-  else if (brands.length > 0) { await saveBin(brandTag, bKey, brands, {}); }
-
-  if (ar.existed && ar.data.length > 0) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
-  else if (agencies.length > 0) { await saveBin(agencyTag, aKey, agencies, {}); }
-
-   setSyncNote('✓ synced · changes sync automatically');
-  renderBrands(); renderAgencies();
+  app.style.display = 'flex';
+  app.style.flexDirection = 'column';
+  document.getElementById('t-name').textContent = INFLUENCER_NAME + '’s list';
+  loadData();
+  initDefaults();
+  setSyncNote('✓ synced · changes save automatically');
+  renderBrands();
 }
-
-// ── SECTION SWITCH ────────────────────────────────────
-function switchSection(s) {
-  activeSection = s;
-  document.getElementById('tab-brands').classList.toggle('active', s === 'brands');
-  document.getElementById('tab-agencies').classList.toggle('active', s === 'agencies');
-  document.getElementById('view-brands').classList.toggle('active', s === 'brands');
-  document.getElementById('view-agencies').classList.toggle('active', s === 'agencies');
-  document.getElementById('filterbar-brands').style.display   = s === 'brands'   ? 'flex' : 'none';
-  document.getElementById('filterbar-agencies').style.display = s === 'agencies' ? 'flex' : 'none';
-  document.getElementById('add-btn').textContent = s === 'brands' ? '+ add brand' : '+ add agency';
-}
-
-// ── FILTER ────────────────────────────────────────────
-function setFilter(btn, section) {
-  btn.closest('.filter-pill-wrap').querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  if (section === 'brands') { activeBrandFilter = btn.dataset.status; renderBrands(); }
   else { activeAgencyFilter = btn.dataset.status; renderAgencies(); }
 }
 
@@ -691,16 +657,10 @@ function pickStatus(btn) {
 }
 
 // ── SAVE / DELETE ─────────────────────────────────────
-async function saveEntry() {
-  if (saving) return;
-  saving = true;
-  const btn = document.getElementById('save-btn');
-  btn.textContent = 'saving…'; btn.disabled = true;
-  setSyncNote('↻ saving…'); 
-
+function saveEntry() {
   if (modalMode === 'brands') {
     const brand = document.getElementById('f-brand')?.value.trim();
-    if (!brand) { alert('Please enter a brand name.'); saving = false; btn.textContent = 'save to list'; btn.disabled = false; return; }
+    if (!brand) { alert('Please enter a brand name.'); return; }
     const data = {
       brand, ig: document.getElementById('f-ig')?.value.trim(),
       website: document.getElementById('f-website')?.value.trim(),
@@ -717,11 +677,11 @@ async function saveEntry() {
       const idx = brands.findIndex(e => e.id === editingId);
       if (idx > -1) brands[idx] = { ...brands[idx], ...data };
     } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; brands.unshift(data); }
-    await saveBin(`sr-roster-${INFLUENCER_ID}`, BIN_KEY + '_brands', brands, {});
+    saveData();
     renderBrands();
   } else {
     const name = document.getElementById('f-name')?.value.trim();
-    if (!name) { alert('Please enter an agency name.'); saving = false; btn.textContent = 'save to list'; btn.disabled = false; return; }
+    if (!name) { alert('Please enter an agency name.'); return; }
     const data = {
       name, speciality: document.getElementById('f-speciality')?.value.trim(),
       website: document.getElementById('f-website')?.value.trim(),
@@ -738,28 +698,22 @@ async function saveEntry() {
       const idx = agencies.findIndex(e => e.id === editingId);
       if (idx > -1) agencies[idx] = { ...agencies[idx], ...data };
     } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; agencies.unshift(data); }
-    await saveBin(`sr-agencies-${INFLUENCER_ID}`, BIN_KEY + '_agencies', agencies, {});
+    saveData();
     renderAgencies();
   }
-
-   setSyncNote('✓ synced · updated just now');
-  saving = false; btn.textContent = 'save to list'; btn.disabled = false;
   closeModal();
 }
 
-async function deleteEntry() {
+function deleteEntry() {
   if (!editingId || !confirm('Remove this entry?')) return;
-  setSyncNote('↻ saving…'); 
   if (modalMode === 'brands') {
     brands = brands.filter(e => e.id !== editingId);
-    await saveBin(`sr-roster-${INFLUENCER_ID}`, BIN_KEY + '_brands', brands, {});
     renderBrands();
   } else {
     agencies = agencies.filter(e => e.id !== editingId);
-    await saveBin(`sr-agencies-${INFLUENCER_ID}`, BIN_KEY + '_agencies', agencies, {});
     renderAgencies();
   }
-   setSyncNote('✓ synced · updated just now');
+  saveData();
   closeModal();
 }
 </script>
