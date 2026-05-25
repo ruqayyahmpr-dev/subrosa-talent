@@ -296,8 +296,6 @@ const INFLUENCER_ID   = 'tahmina';
 const PASSCODE        = 'tahmina2026';
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-const MASTER_KEY = '$2a$10$niEjfkTssnALjnBJE9J4Q.54Zk5rYikfKdWDgz1BBL/rEWfCFz9k2';
-const API        = 'https://api.jsonbin.io/v3';
 const BIN_KEY    = `sr_bin_${INFLUENCER_ID}`;
 
 let brands   = [
@@ -404,49 +402,26 @@ function setLoading(pct) {
 }
 function setSyncNote(t) { document.getElementById('sync-note').textContent = t; }
 
-// ── JSONBIN ───────────────────────────────────────────
-async function loadBin(tag, localKey) {
-  let binId = localStorage.getItem(localKey) || null;
-  if (!binId) {
-    try {
-      const r = await fetch(`${API}/b?meta=true`, { headers: { 'X-Master-Key': MASTER_KEY, 'X-Bin-Meta': 'true' } });
-      const raw = await r.json();
-      const bins = Array.isArray(raw) ? raw : (raw.result || []);
-      const found = bins.find(b => (b.record?.name || b.metadata?.name) === tag);
-      if (found) { binId = found._id || found.record?.id; localStorage.setItem(localKey, binId); }
-    } catch(e) {}
-  }
-  if (binId) {
-    try {
-      const r = await fetch(`${API}/b/${binId}/latest`, { headers: { 'X-Master-Key': MASTER_KEY } });
-      const data = await r.json();
-      return { existed: true, data: data.record?.entries || [], binId };
-    } catch(e) {}
-  }
-  return { existed: false, data: [], binId: null };
+// ── STORAGE (localStorage) ──────────────────────────
+const STORE_KEY = `sr_local_${INFLUENCER_ID}`;
+const AGENCY_KEY = `sr_agency_${INFLUENCER_ID}`;
+
+function saveData() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(entries));
+  localStorage.setItem(AGENCY_KEY, JSON.stringify(agencies));
+  setSyncNote('✓ synced · updated just now');
 }
 
-async function saveBin(tag, localKey, entries, extra) {
-  let binId = localStorage.getItem(localKey) || null;
-  if (!binId) {
-    const r = await fetch(`${API}/b`, {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json', 'X-Master-Key': MASTER_KEY, 'X-Bin-Name': tag, 'X-Bin-Private': 'true' },
-      body: JSON.stringify({ entries, influencer: INFLUENCER_NAME, id: INFLUENCER_ID, ...extra })
-    });
-    const d = await r.json();
-    binId = d.metadata?.id || d.record?.id || d._id;
-    if (binId) localStorage.setItem(localKey, binId);
-  } else {
-    await fetch(`${API}/b/${binId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type':'application/json', 'X-Master-Key': MASTER_KEY },
-      body: JSON.stringify({ entries, influencer: INFLUENCER_NAME, id: INFLUENCER_ID, updatedAt: new Date().toISOString(), ...extra })
-    });
-  }
+function loadData() {
+  try {
+    const e = localStorage.getItem(STORE_KEY);
+    const a = localStorage.getItem(AGENCY_KEY);
+    if (e) entries = JSON.parse(e);
+    if (a) agencies = JSON.parse(a);
+  } catch(err) {}
 }
 
-// ── LOGIN ─────────────────────────────────────────────
+// ── LOGIN // ── LOGIN ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem(`sr_auth_${INFLUENCER_ID}`) === '1') { showApp(); return; }
   document.getElementById('l-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
@@ -486,7 +461,7 @@ async function showApp() {
   if (ar.existed && ar.data.length > 0) { agencies = ar.data; if (ar.binId) localStorage.setItem(aKey, ar.binId); }
   else if (agencies.length > 0) { await saveBin(agencyTag, aKey, agencies, {}); }
 
-  setLoading(100); setSyncNote('✓ synced · changes sync automatically');
+   setSyncNote('✓ synced · changes sync automatically');
   renderBrands(); renderAgencies();
 }
 
@@ -748,7 +723,7 @@ async function saveEntry() {
   saving = true;
   const btn = document.getElementById('save-btn');
   btn.textContent = 'saving…'; btn.disabled = true;
-  setSyncNote('↻ saving…'); setLoading(50);
+  setSyncNote('↻ saving…'); 
 
   if (modalMode === 'brands') {
     const brand = document.getElementById('f-brand')?.value.trim();
@@ -794,14 +769,14 @@ async function saveEntry() {
     renderAgencies();
   }
 
-  setLoading(100); setSyncNote('✓ synced · updated just now');
+   setSyncNote('✓ synced · updated just now');
   saving = false; btn.textContent = 'save to list'; btn.disabled = false;
   closeModal();
 }
 
 async function deleteEntry() {
   if (!editingId || !confirm('Remove this entry?')) return;
-  setSyncNote('↻ saving…'); setLoading(50);
+  setSyncNote('↻ saving…'); 
   if (modalMode === 'brands') {
     brands = brands.filter(e => e.id !== editingId);
     await saveBin(`sr-roster-${INFLUENCER_ID}`, BIN_KEY + '_brands', brands, {});
@@ -811,7 +786,7 @@ async function deleteEntry() {
     await saveBin(`sr-agencies-${INFLUENCER_ID}`, BIN_KEY + '_agencies', agencies, {});
     renderAgencies();
   }
-  setLoading(100); setSyncNote('✓ synced · updated just now');
+   setSyncNote('✓ synced · updated just now');
   closeModal();
 }
 </script>
