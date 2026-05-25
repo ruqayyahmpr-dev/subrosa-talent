@@ -42,23 +42,20 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 .topbar-left { display:flex; align-items:baseline; gap:10px; }
 .topbar-wordmark { font-family:var(--fs); font-style:italic; font-weight:300; font-size:22px; color:var(--parchment); }
 .topbar-divider { width:1px; height:14px; background:rgba(242,237,228,0.15); margin:0 2px; align-self:center; }
-.topbar-influencer { font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(242,237,228,0.45); }
+.topbar-name { font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(242,237,228,0.45); }
 .topbar-right { display:flex; align-items:center; gap:10px; }
 .sync-note { font-family:var(--fs); font-style:italic; font-size:12px; color:rgba(242,237,228,0.28); }
 .btn-add { padding:7px 16px; background:transparent; border:1px solid rgba(242,237,228,0.22); border-radius:var(--r); color:rgba(242,237,228,0.75); font-family:var(--fn); font-size:12px; letter-spacing:0.06em; cursor:pointer; transition:all 0.15s; }
 .btn-add:hover { background:rgba(242,237,228,0.08); color:var(--parchment); }
-.btn-add:disabled { opacity:0.4; cursor:not-allowed; }
 
-/* SECTION TABS */
-.section-tabs { background:var(--crimson-dark); border-bottom:1px solid rgba(242,237,228,0.1); padding:0 2rem; display:flex; gap:0; flex-shrink:0; }
-.section-tab { padding:10px 20px; font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(242,237,228,0.35); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.15s; background:none; border-top:none; border-left:none; border-right:none; letter-spacing:0.02em; }
-.section-tab:hover { color:rgba(242,237,228,0.65); }
-.section-tab.active { color:var(--parchment); border-bottom-color:var(--parchment); }
+/* TABS */
+.tabs { background:var(--crimson-dark); border-bottom:1px solid rgba(242,237,228,0.07); padding:0 2rem; display:flex; gap:2rem; }
+.tab { font-family:var(--fn); font-size:12px; color:rgba(242,237,228,0.4); padding:10px 0; cursor:pointer; border-bottom:2px solid transparent; letter-spacing:0.08em; transition:all 0.15s; }
+.tab.active { color:var(--parchment); border-bottom-color:var(--parchment); }
 
 /* FILTER */
 .filterbar { background:var(--cream); border-bottom:1px solid var(--border); padding:9px 2rem; display:flex; align-items:center; gap:10px; flex-wrap:wrap; flex-shrink:0; }
 .filterbar-label { font-family:var(--fs); font-style:italic; font-size:12px; color:var(--ink-3); }
-.filter-pill-wrap { display:flex; gap:6px; flex-wrap:wrap; }
 .filter-pill { padding:4px 11px; border-radius:20px; border:1px solid var(--border-2); background:transparent; font-family:var(--fn); font-size:11px; color:var(--ink-2); cursor:pointer; transition:all 0.13s; }
 .filter-pill:hover { background:var(--parchment-2); }
 .filter-pill.active { background:var(--crimson-dark); color:var(--parchment); border-color:var(--crimson-dark); }
@@ -70,21 +67,15 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 .intro-rule { height:1px; background:var(--border); }
 
 /* LIST */
-.section-view { display:none; flex:1; flex-direction:column; }
-.section-view.active { display:flex; }
 .brand-list { padding:0 2rem 5rem; flex:1; }
-.list-header { display:grid; gap:1rem; padding:14px 0.75rem 10px; border-bottom:1px solid var(--border-2); }
-.list-header.brands-header { grid-template-columns:2fr 1fr 1.5fr 40px; }
-.list-header.agencies-header { grid-template-columns:2fr 1fr 1fr 1.5fr 40px; }
+.list-header { display:grid; grid-template-columns:2fr 1fr 1.5fr 40px; gap:1rem; padding:14px 0.75rem 10px; border-bottom:1px solid var(--border-2); }
 .list-header span { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-3); font-weight:500; }
-.brand-item { display:grid; align-items:center; gap:1rem; padding:18px 0.75rem; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.12s; border-radius:var(--r); }
-.brand-item.brands-row { grid-template-columns:2fr 1fr 1.5fr 40px; }
-.brand-item.agencies-row { grid-template-columns:2fr 1fr 1fr 1.5fr 40px; }
+.brand-item { display:grid; grid-template-columns:2fr 1fr 1.5fr 40px; align-items:center; gap:1rem; padding:18px 0.75rem; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.12s; border-radius:var(--r); }
 .brand-item:hover { background:rgba(107,26,26,0.04); }
 .brand-item-name { font-family:var(--fs); font-size:20px; font-weight:400; color:var(--ink); line-height:1.1; }
-.brand-item-meta { font-size:11px; color:var(--ink-3); font-style:italic; font-family:var(--fs); margin-top:2px; }
-.brand-item-ig { display:inline-block; font-size:12px; color:var(--crimson); text-decoration:none; margin-top:3px; opacity:0.75; transition:opacity 0.12s; }
+.brand-item-ig { display:inline-block; font-size:12px; color:var(--crimson); text-decoration:none; margin-top:3px; opacity:0.75; }
 .brand-item-ig:hover { opacity:1; }
+.brand-item-sub { font-size:11px; color:var(--ink-3); margin-top:2px; }
 .badge { display:inline-block; padding:4px 10px; border-radius:20px; font-size:11px; font-family:var(--fs); font-style:italic; white-space:nowrap; }
 .badge-to-pitch { background:#f0ebff; color:#3d2070; }
 .badge-pitched  { background:#fdf4dc; color:#6b4500; }
@@ -92,82 +83,45 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
 .badge-working  { background:#e4f5ec; color:#1a5c30; }
 .badge-past     { background:#fdeee8; color:#6b2a10; }
 .badge-passed   { background:#eeede9; color:#5c5850; }
-/* Agency-specific status badges */
-.badge-to-reach  { background:#f0ebff; color:#3d2070; }
-.badge-reached   { background:#fdf4dc; color:#6b4500; }
-.badge-meeting   { background:#e4f1fb; color:#0c3d68; }
+.badge-to-reach { background:#f0ebff; color:#3d2070; }
+.badge-reached  { background:#fdf4dc; color:#6b4500; }
+.badge-meeting  { background:#e4f1fb; color:#0c3d68; }
 .badge-on-roster { background:#e4f5ec; color:#1a5c30; }
-.badge-not-fit   { background:#eeede9; color:#5c5850; }
+.badge-not-fit  { background:#eeede9; color:#5c5850; }
 .brand-notes { font-size:12px; color:var(--ink-3); font-style:italic; font-family:var(--fs); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .brand-arrow { justify-self:end; font-size:18px; color:var(--parchment-3); }
 .empty { text-align:center; padding:5rem 2rem; }
 .empty p { font-family:var(--fs); font-style:italic; font-size:22px; color:var(--ink-3); margin-bottom:0.5rem; }
 .empty small { font-size:12px; color:var(--ink-3); }
-.loading-bar { position:fixed; top:0; left:0; height:2px; background:var(--crimson); width:0; transition:width 0.3s; z-index:999; }
 
 /* MODAL */
 .modal-overlay { position:fixed; inset:0; background:rgba(28,22,18,0.6); z-index:200; display:none; align-items:flex-start; justify-content:flex-end; }
 .modal-overlay.open { display:flex; }
-.modal { width:460px; max-width:95vw; height:100vh; background:var(--cream); border-left:1px solid var(--border-2); display:flex; flex-direction:column; }
+.modal { width:460px; max-width:95vw; height:100vh; background:var(--cream); border-left:1px solid var(--border-2); display:flex; flex-direction:column; overflow-y:auto; }
 .modal-top { background:var(--crimson-dark); padding:22px 24px 20px; flex-shrink:0; }
 .modal-top-row { display:flex; align-items:flex-start; justify-content:space-between; }
 .modal-heading { font-family:var(--fs); font-style:italic; font-weight:300; font-size:28px; color:var(--parchment); line-height:1; }
 .modal-subheading { font-size:11px; color:rgba(242,237,228,0.35); margin-top:4px; letter-spacing:0.08em; }
-.modal-close { background:none; border:none; color:rgba(242,237,228,0.4); font-size:22px; cursor:pointer; padding:0; line-height:1; transition:color 0.12s; }
+.modal-close { background:none; border:none; color:rgba(242,237,228,0.4); font-size:22px; cursor:pointer; padding:0; line-height:1; }
 .modal-close:hover { color:var(--parchment); }
 .modal-body { padding:24px; flex:1; overflow-y:auto; }
-.m-section-label { font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--crimson-mid); font-weight:500; margin-bottom:12px; padding-bottom:7px; border-bottom:1px solid var(--border); }
+.section-label { font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--crimson-mid); font-weight:500; margin-bottom:12px; padding-bottom:7px; border-bottom:1px solid var(--border); }
 .form-section { margin-bottom:22px; }
 .field-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px; }
 .field-row.full { grid-template-columns:1fr; }
 .field { display:flex; flex-direction:column; gap:4px; }
-.field label { font-size:11px; color:var(--ink-3); letter-spacing:0.04em; }
+.field label { font-size:11px; color:var(--ink-3); }
 .field input, .field select, .field textarea { padding:9px 11px; border:1px solid var(--border-2); border-radius:var(--r); background:var(--parchment); font-family:var(--fn); font-size:13px; color:var(--ink); outline:none; width:100%; transition:border-color 0.15s; }
 .field input:focus, .field select:focus, .field textarea:focus { border-color:var(--crimson); }
 .field textarea { resize:vertical; min-height:70px; line-height:1.5; }
-.status-picker { display:flex; gap:6px; flex-wrap:wrap; }
-.status-opt { padding:5px 12px; border-radius:20px; border:1px solid var(--border-2); background:transparent; font-family:var(--fs); font-style:italic; font-size:12px; color:var(--ink-2); cursor:pointer; transition:all 0.12s; }
-.status-opt.sel-to-pitch  { background:#f0ebff; color:#3d2070; border-color:#c9b8f5; }
-.status-opt.sel-pitched   { background:#fdf4dc; color:#6b4500; border-color:#e8c96a; }
-.status-opt.sel-in-convo  { background:#e4f1fb; color:#0c3d68; border-color:#92c4e8; }
-.status-opt.sel-working   { background:#e4f5ec; color:#1a5c30; border-color:#85d4a0; }
-.status-opt.sel-past      { background:#fdeee8; color:#6b2a10; border-color:#f0b090; }
-.status-opt.sel-passed    { background:#eeede9; color:#5c5850; border-color:#ccc9c0; }
-.status-opt.sel-to-reach  { background:#f0ebff; color:#3d2070; border-color:#c9b8f5; }
-.status-opt.sel-reached   { background:#fdf4dc; color:#6b4500; border-color:#e8c96a; }
-.status-opt.sel-meeting   { background:#e4f1fb; color:#0c3d68; border-color:#92c4e8; }
-.status-opt.sel-on-roster { background:#e4f5ec; color:#1a5c30; border-color:#85d4a0; }
-.status-opt.sel-not-fit   { background:#eeede9; color:#5c5850; border-color:#ccc9c0; }
 .modal-footer { padding:14px 24px; border-top:1px solid var(--border); display:flex; gap:8px; flex-shrink:0; background:var(--cream); }
 .btn-save { flex:1; padding:11px; background:var(--crimson-dark); color:var(--parchment); border:none; border-radius:var(--r); font-family:var(--fn); font-size:12px; font-weight:500; letter-spacing:0.1em; cursor:pointer; transition:background 0.15s; }
 .btn-save:hover { background:var(--crimson); }
-.btn-save:disabled { opacity:0.5; cursor:not-allowed; }
-.btn-del { padding:11px 14px; background:transparent; border:1px solid var(--border-2); border-radius:var(--r); font-family:var(--fn); font-size:12px; color:var(--ink-3); cursor:pointer; transition:all 0.15s; }
+.btn-del { padding:11px 14px; background:transparent; border:1px solid var(--border-2); border-radius:var(--r); font-family:var(--fn); font-size:12px; color:var(--ink-3); cursor:pointer; }
 .btn-del:hover { color:#b83030; border-color:#b83030; }
-
-/* STATUS DROPDOWN */
-.status-dropdown-wrap { position: relative; display: inline-block; width: 100%; }
-.status-dd-trigger { width: 100%; padding: 10px 14px; background: var(--parchment); border: 1px solid var(--border-2); border-radius: var(--r); display: flex; align-items: center; gap: 10px; cursor: pointer; font-family: var(--fn); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
-.status-dd-trigger:hover { border-color: var(--crimson); }
-.status-dd-arrow { margin-left: auto; font-size: 11px; color: var(--ink-3); transition: transform 0.15s; }
-.status-dd-trigger.open .status-dd-arrow { transform: rotate(180deg); }
-.status-dd-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: white; border: 1px solid var(--border-2); border-radius: var(--r); box-shadow: 0 4px 16px rgba(28,22,18,0.12); z-index: 100; overflow: hidden; display: none; }
-.status-dd-menu.open { display: block; }
-.status-dd-item { width: 100%; padding: 11px 14px; background: none; border: none; display: flex; align-items: center; gap: 12px; cursor: pointer; font-family: var(--fn); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-align: left; transition: background 0.1s; }
-.status-dd-item:hover { background: var(--parchment); }
-.status-dd-item.selected { background: var(--parchment-2); font-weight: 500; }
-.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.dot-empty  { background: transparent; border: 1.5px solid var(--parchment-3); }
-.dot-amber  { background: #e8c96a; }
-.dot-green  { background: #85d4a0; }
-.dot-purple { background: #c9b8f5; }
-.dot-blue   { background: #92c4e8; }
-.status-dd-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 </style>
 </head>
 <body>
-
-<div class="loading-bar" id="loading-bar"></div>
 
 <!-- LOGIN -->
 <div id="screen-login">
@@ -179,7 +133,7 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
     <div class="login-rule"></div>
     <div class="login-field"><input type="email" id="l-email" placeholder="your email" autocomplete="email" /></div>
     <div class="login-field"><input type="password" id="l-pass" placeholder="passcode" /></div>
-    <button class="login-cta" id="login-btn" onclick="doLogin()">enter</button>
+    <button class="login-cta" onclick="doLogin()">enter</button>
     <p class="login-err" id="l-err"></p>
   </div>
 </div>
@@ -190,81 +144,40 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
     <div class="topbar-left">
       <span class="topbar-wordmark">the list</span>
       <div class="topbar-divider"></div>
-      <span class="topbar-influencer" id="t-name"></span>
+      <span class="topbar-name" id="t-name"></span>
     </div>
     <div class="topbar-right">
       <span class="sync-note" id="sync-note">✓ synced</span>
-      <button class="btn-add" id="add-btn" onclick="openModal(null)">+ add</button>
+      <button class="btn-add" onclick="openModal(null)">+ add</button>
     </div>
   </div>
-
-  <!-- SECTION TABS -->
-  <div class="section-tabs">
-    <button class="section-tab active" id="tab-brands" onclick="switchSection('brands')">brands</button>
-    <button class="section-tab" id="tab-agencies" onclick="switchSection('agencies')">pr agencies</button>
+  <div class="tabs">
+    <span class="tab active" id="tab-brands" onclick="switchTab('brands')">brands</span>
+    <span class="tab" id="tab-agencies" onclick="switchTab('agencies')">pr agencies</span>
   </div>
-
-  <!-- FILTER BAR -->
-  <div class="filterbar" id="filterbar-brands">
+  <div class="filterbar" id="filterbar">
     <span class="filterbar-label">filter —</span>
-    <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'brands')">all</button>
-      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this,'brands')">to pitch</button>
-      <button class="filter-pill" data-status="pitched" onclick="setFilter(this,'brands')">pitched</button>
-      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this,'brands')">in conversation</button>
-      <button class="filter-pill" data-status="working" onclick="setFilter(this,'brands')">working with</button>
-      <button class="filter-pill" data-status="past" onclick="setFilter(this,'brands')">past collab</button>
-      <button class="filter-pill" data-status="passed" onclick="setFilter(this,'brands')">passed</button>
-    </div>
+    <button class="filter-pill active" data-status="" onclick="setFilter(this)">all</button>
+    <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this)">to pitch</button>
+    <button class="filter-pill" data-status="pitched" onclick="setFilter(this)">pitched</button>
+    <button class="filter-pill" data-status="in-convo" onclick="setFilter(this)">in conversation</button>
+    <button class="filter-pill" data-status="working" onclick="setFilter(this)">working with</button>
+    <button class="filter-pill" data-status="past" onclick="setFilter(this)">past collab</button>
+    <button class="filter-pill" data-status="passed" onclick="setFilter(this)">passed</button>
   </div>
-
-  <div class="filterbar" id="filterbar-agencies" style="display:none">
-    <span class="filterbar-label">filter —</span>
-    <div class="filter-pill-wrap">
-      <button class="filter-pill active" data-status="" onclick="setFilter(this,'agencies')">all</button>
-      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this,'agencies')">to reach out</button>
-      <button class="filter-pill" data-status="reached" onclick="setFilter(this,'agencies')">reached out</button>
-      <button class="filter-pill" data-status="meeting" onclick="setFilter(this,'agencies')">meeting booked</button>
-      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this,'agencies')">on roster</button>
-      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this,'agencies')">not a fit</button>
-    </div>
+  <div class="intro-band">
+    <h2 class="intro-heading">A living list of brands aligned<br>with my aesthetic and storytelling.</h2>
+    <p class="intro-desc">For outreach, partnerships, and long-term collaboration — updated by sub rosa.</p>
+    <div class="intro-rule"></div>
   </div>
-
-  <!-- BRANDS VIEW -->
-  <div class="section-view active" id="view-brands">
-    <div class="intro-band">
-      <h2 class="intro-heading">A living list of brands aligned<br>with my aesthetic and storytelling.</h2>
-      <p class="intro-desc">For outreach, partnerships, and long-term collaboration — updated by sub rosa.</p>
-      <div class="intro-rule"></div>
+  <div class="brand-list">
+    <div class="list-header" id="list-header">
+      <span>brand</span><span>status</span><span>notes from sub rosa</span><span></span>
     </div>
-    <div class="brand-list">
-      <div class="list-header brands-header">
-        <span>brand</span><span>status</span><span>notes from sub rosa</span><span></span>
-      </div>
-      <div id="list-brands"></div>
-      <div id="empty-brands" class="empty" style="display:none">
-        <p>nothing here yet.</p>
-        <small>add a brand you'd love to work with.</small>
-      </div>
-    </div>
-  </div>
-
-  <!-- AGENCIES VIEW -->
-  <div class="section-view" id="view-agencies">
-    <div class="intro-band">
-      <h2 class="intro-heading">PR agencies worth knowing.</h2>
-      <p class="intro-desc">Agencies sub rosa is pitching on your behalf — tracked from first contact to roster.</p>
-      <div class="intro-rule"></div>
-    </div>
-    <div class="brand-list">
-      <div class="list-header agencies-header">
-        <span>agency</span><span>status</span><span>speciality</span><span>notes from sub rosa</span><span></span>
-      </div>
-      <div id="list-agencies"></div>
-      <div id="empty-agencies" class="empty" style="display:none">
-        <p>nothing here yet.</p>
-        <small>sub rosa will add agencies as they're identified.</small>
-      </div>
+    <div id="list-body"></div>
+    <div id="empty-msg" class="empty" style="display:none">
+      <p>nothing here yet.</p>
+      <small>add a brand or agency to get started.</small>
     </div>
   </div>
 </div>
@@ -281,230 +194,198 @@ body { font-family: var(--fn); background: var(--parchment); color: var(--ink); 
         <button class="modal-close" onclick="closeModal()">×</button>
       </div>
     </div>
-    <div class="modal-body" id="modal-body-content"></div>
+    <div class="modal-body" id="m-body"></div>
     <div class="modal-footer">
-      <button class="btn-save" id="save-btn" onclick="saveEntry()">save to list</button>
+      <button class="btn-save" onclick="saveEntry()">save to list</button>
       <button class="btn-del" id="btn-del" style="display:none" onclick="deleteEntry()">remove</button>
     </div>
   </div>
 </div>
 
 <script>
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const INFLUENCER_NAME = 'Haylé';
 const INFLUENCER_ID   = 'hayle';
 const PASSCODE        = 'hayle2026';
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+const BRANDS_KEY  = `sr_brands_${INFLUENCER_ID}`;
+const AGENCIES_KEY = `sr_agencies_${INFLUENCER_ID}`;
 
-let brands = [
-  // Fashion & Apparel
-  {id:'h001',brand:'Quince',ig:'@onequince',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h002',brand:'KITS Eyecare',ig:'@kitseyecare',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h003',brand:'Winners',ig:'@winners',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h004',brand:'Knix',ig:'@knix',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h005',brand:'Princess Polly',ig:'@princesspolly',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Beauty & Skincare
-  {id:'h006',brand:'Aesop',ig:'@aesop',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h007',brand:'Aestura Canada',ig:'@aestura_ca',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h008',brand:'OSEA Malibu',ig:'@oseamalibu',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h009',brand:'Bonjout Beauty',ig:'@bonjoutbeauty',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h010',brand:'Beautiful Earth Boutique',ig:'@beautifulearthboutique',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h011',brand:'Salt & Stone',ig:'@saltandstone',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h012',brand:'Phlur',ig:'@phlur',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h013',brand:'Jo Malone London',ig:'@jomalonelondon',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h014',brand:'OMY Laboratoires',ig:'@omylaboratoires',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h015',brand:'Grown Alchemist',ig:'@grownalchemist',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h016',brand:'Dermalogica Canada',ig:'@dermalogicacanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h017',brand:'Estée Lauder Canada',ig:'@esteelaudercanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Wellness & Fitness
-  {id:'h018',brand:'Tape Her Sleep',ig:'@tapehersleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h019',brand:'Hatch',ig:'@hatchforsleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h020',brand:'Golf Town',ig:'@golftown',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h021',brand:'CanPrev',ig:'@canprev',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h022',brand:'Saje Wellness',ig:'@sajewellness',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Home & Lifestyle
-  {id:'h023',brand:'If Only Home',ig:'@ifonlyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h024',brand:'Veradek',ig:'@veradek',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h025',brand:'Every Room',ig:'@everyroom.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h026',brand:'Tuck Bedding',ig:'@tuckbedding',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h027',brand:'Boy Smells',ig:'@boy__smells',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h028',brand:'P.F. Candle Co.',ig:'@pfcandleco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h029',brand:'Parachute Home',ig:'@parachutehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h030',brand:'SMEG Canada',ig:'@smegcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h031',brand:'Our Place',ig:'@ourplace',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h032',brand:'Great Jones',ig:'@greatjones',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h033',brand:'Caraway Home',ig:'@caraway_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h034',brand:'Gozney',ig:'@gozney',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h035',brand:'Public Goods',ig:'@publicgoods',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h036',brand:'Grove Collaborative',ig:'@grovecollaborative',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h037',brand:'Burrow',ig:'@burrow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h038',brand:'Dupray',ig:'@dupray',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h039',brand:'Outer',ig:'@liveouter',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h040',brand:'Silk & Snow',ig:'@silkandsnow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h041',brand:'Castlery Canada',ig:'@castleryca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h042',brand:'Refco',ig:'@refco.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h043',brand:'Rug and Weave',ig:'@rugandweave',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h044',brand:'Bouclair',ig:'@bouclair',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h045',brand:'Wayfair Canada',ig:'@wayfaircanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h046',brand:'AllModern',ig:'@allmodern',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h047',brand:'Brooklinen',ig:'@brooklinen',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h048',brand:'Thuma',ig:'@thuma.co',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h049',brand:'Cozey',ig:'@cozey',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h050',brand:'Sundays Furniture',ig:'@sundaysfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h051',brand:'Endy',ig:'@endy',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h052',brand:'Hush Blankets',ig:'@hushblankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h053',brand:'Pillow Cube',ig:'@pillowcube',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h054',brand:'Soft Frame Designs',ig:'@softframedesigns',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h055',brand:'Abbode',ig:'@abbode',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h056',brand:'Boost Blinds',ig:'@boost.blinds',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h057',brand:'Two Pages Curtains',ig:'@twopagescurtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h058',brand:'Curtarra Curtains',ig:'@curtarra_curtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h059',brand:'Rove Concepts',ig:'@roveconcepts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h060',brand:'Tekla Fabrics',ig:'@teklafabrics',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h061',brand:'Nordic Knots',ig:'@nordicknots',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h062',brand:'Bolia',ig:'@boliacom',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h063',brand:'Lola Blankets',ig:'@lolablankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h064',brand:'Guests on Earth',ig:'@guestsonearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h065',brand:'Lifely Home',ig:'@lifelyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h066',brand:'Hauser Furniture',ig:'@hauserfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h067',brand:'Lamps Plus',ig:'@lampsplus',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h068',brand:'IKEA Canada',ig:'@ikeacanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h069',brand:'The Muskoka Sauna Co',ig:'@themuskokaaunaco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h070',brand:'Article',ig:'@article',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h071',brand:'The Brick',ig:'@brickwarehouse',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h072',brand:'Second Shop',ig:'@secondshopretail',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h073',brand:'The EH Frame',ig:'@the_ehframe',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h074',brand:'Awara Sleep',ig:'@awarasleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h075',brand:'Pura',ig:'@pura',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h076',brand:'Nolan Interior',ig:'@nolan_interior',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h077',brand:'Fable Home',ig:'@fablehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h078',brand:'Mellow Sleep',ig:'@mellow.sleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h079',brand:'Umbra',ig:'@umbra_design',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h080',brand:'Breville Canada',ig:'@brevillecanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h081',brand:'Hulala Home',ig:'@hulala_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h082',brand:'Ergonofis',ig:'@ergonofis',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h083',brand:'Branch Furniture',ig:'@branchfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h084',brand:'AromaTech',ig:'@aromatech',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h085',brand:'CB2 Canada',ig:'@cb2canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h086',brand:'KitchenAid Canada',ig:'@kitchenaid_ca',website:'',why:'Home & Lifestyle',status:'pitched',notes:'Outreach complete May 22',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h087',brand:'Eternity Modern Home',ig:'@eternitymodernhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h088',brand:'Blossholm',ig:'@blossholm',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h089',brand:'Panelux Canada',ig:'@paneluxcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h090',brand:'Fellow Products',ig:'@fellowproducts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h091',brand:'Year & Day',ig:'@yearandday',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h092',brand:'Anthropologie Home',ig:'@anthropologiehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h093',brand:'Cozy Earth',ig:'@cozyearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h094',brand:'Snowe Home',ig:'@snowehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h095',brand:'EQ3',ig:'@eq3',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h096',brand:'Casper Canada',ig:'@casper_canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h097',brand:'Sixpenny',ig:'@sixpennyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Travel & Hospitality
-  {id:'h098',brand:'The Maker Hotel',ig:'@themakerhotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h099',brand:'Elora Mill',ig:'@elora_mill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h100',brand:'Kat Florence Hotels',ig:'@katflorencehotels',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h101',brand:'The Liberty Inn',ig:'@thelibertyinn',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h102',brand:'The Scotsman Hotel Niagara',ig:'@thescotsmanhotelniagara',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h103',brand:"Anthony's Elora",ig:'@anthonyselora',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h104',brand:"Jayne's Cottages",ig:'@jaynescottages',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h105',brand:'The Ayrshire Hotel',ig:'@theayrshirehotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h106',brand:'Fairmont Le Château Frontenac',ig:'@fairmontfrontenac',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h107',brand:'The Hotel 1928',ig:'@thehotel1928',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h108',brand:'Le Capitole Hotel',ig:'@le.capitole.hotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h109',brand:'The High Acre',ig:'@thehighacre',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h110',brand:'Sparkling Hill Resort',ig:'@sparklinghill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h111',brand:'Monos',ig:'@monostravel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Food & Beverage
-  {id:'h112',brand:'Nespresso Canada',ig:'@nespresso.ca',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h113',brand:'Patrón',ig:'@patron',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Pets
-  {id:'h114',brand:'Litter-Robot',ig:'@thelitterrobot',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h115',brand:'Merrick Pet Care',ig:'@merrickpetcare',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  // Tech & Accessories
-  {id:'h116',brand:'YETI',ig:'@yeti',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h117',brand:'Oakywood',ig:'@oakywood',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h118',brand:'Ray-Ban Meta',ig:'@raybanmeta',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h119',brand:'Philips Hue',ig:'@philipshue',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h120',brand:'Osume Keys',ig:'@osumekeys',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h121',brand:'VibeTech Global',ig:'@vibetech_global',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h122',brand:'Marshall',ig:'@marshall',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'h123',brand:'Meraki Tech Global',ig:'@merakitechglobal',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+const STATUS_LABEL = { 'to-pitch':'to pitch','pitched':'pitched','in-convo':'in conversation','working':'working with','past':'past collab','passed':'passed','to-reach':'to reach out','reached':'reached out','meeting':'meeting booked','on-roster':'on roster','not-fit':'not a fit' };
+const STATUS_CLASS = { 'to-pitch':'badge-to-pitch','pitched':'badge-pitched','in-convo':'badge-in-convo','working':'badge-working','past':'badge-past','passed':'badge-passed','to-reach':'badge-to-reach','reached':'badge-reached','meeting':'badge-meeting','on-roster':'badge-on-roster','not-fit':'badge-not-fit' };
+
+const DEFAULT_BRANDS = [
+  {id:'h001',brand:'Quince',ig:'@onequince',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h002',brand:'KITS Eyecare',ig:'@kitseyecare',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h003',brand:'Winners',ig:'@winners',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h004',brand:'Knix',ig:'@knix',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h005',brand:'Princess Polly',ig:'@princesspolly',website:'',why:'Fashion & Apparel',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h006',brand:'Aesop',ig:'@aesop',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h007',brand:'Aestura Canada',ig:'@aestura_ca',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h008',brand:'OSEA Malibu',ig:'@oseamalibu',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h009',brand:'Bonjout Beauty',ig:'@bonjoutbeauty',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h010',brand:'Beautiful Earth Boutique',ig:'@beautifulearthboutique',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h011',brand:'Salt & Stone',ig:'@saltandstone',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h012',brand:'Phlur',ig:'@phlur',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h013',brand:'Jo Malone London',ig:'@jomalonelondon',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h014',brand:'OMY Laboratoires',ig:'@omylaboratoires',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h015',brand:'Grown Alchemist',ig:'@grownalchemist',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h016',brand:'Dermalogica Canada',ig:'@dermalogicacanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h017',brand:'Estée Lauder Canada',ig:'@esteelaudercanada',website:'',why:'Beauty & Skincare',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h018',brand:'Tape Her Sleep',ig:'@tapehersleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h019',brand:'Hatch',ig:'@hatchforsleep',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h020',brand:'Golf Town',ig:'@golftown',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h021',brand:'CanPrev',ig:'@canprev',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h022',brand:'Saje Wellness',ig:'@sajewellness',website:'',why:'Wellness & Fitness',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h023',brand:'If Only Home',ig:'@ifonlyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h024',brand:'Veradek',ig:'@veradek',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h025',brand:'Every Room',ig:'@everyroom.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h026',brand:'Tuck Bedding',ig:'@tuckbedding',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h027',brand:'Boy Smells',ig:'@boy__smells',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h028',brand:'P.F. Candle Co.',ig:'@pfcandleco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h029',brand:'Parachute Home',ig:'@parachutehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h030',brand:'SMEG Canada',ig:'@smegcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h031',brand:'Our Place',ig:'@ourplace',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h032',brand:'Great Jones',ig:'@greatjones',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h033',brand:'Caraway Home',ig:'@caraway_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h034',brand:'Gozney',ig:'@gozney',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h035',brand:'Public Goods',ig:'@publicgoods',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h036',brand:'Grove Collaborative',ig:'@grovecollaborative',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h037',brand:'Burrow',ig:'@burrow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h038',brand:'Dupray',ig:'@dupray',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h039',brand:'Outer',ig:'@liveouter',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h040',brand:'Silk & Snow',ig:'@silkandsnow',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h041',brand:'Castlery Canada',ig:'@castleryca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h042',brand:'Refco',ig:'@refco.ca',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h043',brand:'Rug and Weave',ig:'@rugandweave',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h044',brand:'Bouclair',ig:'@bouclair',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h045',brand:'Wayfair Canada',ig:'@wayfaircanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h046',brand:'AllModern',ig:'@allmodern',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h047',brand:'Brooklinen',ig:'@brooklinen',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h048',brand:'Thuma',ig:'@thuma.co',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h049',brand:'Cozey',ig:'@cozey',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h050',brand:'Sundays Furniture',ig:'@sundaysfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h051',brand:'Endy',ig:'@endy',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h052',brand:'Hush Blankets',ig:'@hushblankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h053',brand:'Pillow Cube',ig:'@pillowcube',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h054',brand:'Soft Frame Designs',ig:'@softframedesigns',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h055',brand:'Abbode',ig:'@abbode',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h056',brand:'Boost Blinds',ig:'@boost.blinds',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h057',brand:'Two Pages Curtains',ig:'@twopagescurtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h058',brand:'Curtarra Curtains',ig:'@curtarra_curtains',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h059',brand:'Rove Concepts',ig:'@roveconcepts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h060',brand:'Tekla Fabrics',ig:'@teklafabrics',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h061',brand:'Nordic Knots',ig:'@nordicknots',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h062',brand:'Bolia',ig:'@boliacom',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h063',brand:'Lola Blankets',ig:'@lolablankets',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h064',brand:'Guests on Earth',ig:'@guestsonearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h065',brand:'Lifely Home',ig:'@lifelyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h066',brand:'Hauser Furniture',ig:'@hauserfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h067',brand:'Lamps Plus',ig:'@lampsplus',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h068',brand:'IKEA Canada',ig:'@ikeacanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h069',brand:'The Muskoka Sauna Co',ig:'@themuskokaaunaco',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h070',brand:'Article',ig:'@article',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h071',brand:'The Brick',ig:'@brickwarehouse',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h072',brand:'Second Shop',ig:'@secondshopretail',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h073',brand:'The EH Frame',ig:'@the_ehframe',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h074',brand:'Awara Sleep',ig:'@awarasleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h075',brand:'Pura',ig:'@pura',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h076',brand:'Nolan Interior',ig:'@nolan_interior',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h077',brand:'Fable Home',ig:'@fablehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h078',brand:'Mellow Sleep',ig:'@mellow.sleep',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h079',brand:'Umbra',ig:'@umbra_design',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h080',brand:'Breville Canada',ig:'@brevillecanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h081',brand:'Hulala Home',ig:'@hulala_home',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h082',brand:'Ergonofis',ig:'@ergonofis',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h083',brand:'Branch Furniture',ig:'@branchfurniture',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h084',brand:'AromaTech',ig:'@aromatech',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h085',brand:'CB2 Canada',ig:'@cb2canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h086',brand:'KitchenAid Canada',ig:'@kitchenaid_ca',website:'',why:'Home & Lifestyle',status:'pitched',notes:'Outreach complete May 22',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h087',brand:'Eternity Modern Home',ig:'@eternitymodernhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h088',brand:'Blossholm',ig:'@blossholm',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h089',brand:'Panelux Canada',ig:'@paneluxcanada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h090',brand:'Fellow Products',ig:'@fellowproducts',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h091',brand:'Year & Day',ig:'@yearandday',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h092',brand:'Anthropologie Home',ig:'@anthropologiehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h093',brand:'Cozy Earth',ig:'@cozyearth',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h094',brand:'Snowe Home',ig:'@snowehome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h095',brand:'EQ3',ig:'@eq3',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h096',brand:'Casper Canada',ig:'@casper_canada',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h097',brand:'Sixpenny',ig:'@sixpennyhome',website:'',why:'Home & Lifestyle',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h098',brand:'The Maker Hotel',ig:'@themakerhotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h099',brand:'Elora Mill',ig:'@elora_mill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h100',brand:'Kat Florence Hotels',ig:'@katflorencehotels',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h101',brand:'The Liberty Inn',ig:'@thelibertyinn',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h102',brand:'The Scotsman Hotel Niagara',ig:'@thescotsmanhotelniagara',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h103',brand:"Anthony's Elora",ig:'@anthonyselora',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h104',brand:"Jayne's Cottages",ig:'@jaynescottages',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h105',brand:'The Ayrshire Hotel',ig:'@theayrshirehotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h106',brand:'Fairmont Le Château Frontenac',ig:'@fairmontfrontenac',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h107',brand:'The Hotel 1928',ig:'@thehotel1928',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h108',brand:'Le Capitole Hotel',ig:'@le.capitole.hotel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h109',brand:'The High Acre',ig:'@thehighacre',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h110',brand:'Sparkling Hill Resort',ig:'@sparklinghill',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h111',brand:'Monos',ig:'@monostravel',website:'',why:'Travel & Hospitality',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h112',brand:'Nespresso Canada',ig:'@nespresso.ca',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h113',brand:'Patrón',ig:'@patron',website:'',why:'Food & Beverage',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h114',brand:'Litter-Robot',ig:'@thelitterrobot',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h115',brand:'Merrick Pet Care',ig:'@merrickpetcare',website:'',why:'Pets',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h116',brand:'YETI',ig:'@yeti',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h117',brand:'Oakywood',ig:'@oakywood',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h118',brand:'Ray-Ban Meta',ig:'@raybanmeta',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h119',brand:'Philips Hue',ig:'@philipshue',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h120',brand:'Osume Keys',ig:'@osumekeys',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h121',brand:'VibeTech Global',ig:'@vibetech_global',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h122',brand:'Marshall',ig:'@marshall',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
+  {id:'h123',brand:'Meraki Tech Global',ig:'@merakitechglobal',website:'',why:'Tech & Accessories',status:'to-pitch',notes:'Dream Brand',contact:'',amount:'',deliverables:'',due:''},
 ];
-let agencies = [
-  {id:'a001',name:'Burson Canada',speciality:'PR & Communications',website:'https://burson.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a002',name:'Langton PR',speciality:'PR & Communications',website:'https://langtonpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a003',name:'Harbinger Ideas',speciality:'PR & Communications',website:'https://harbingerideas.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a004',name:'Matinee Studios',speciality:'PR & Talent',website:'https://matineestudios.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a005',name:'1 Milk 2 Sugars',speciality:'PR & Influencer Marketing',website:'https://1milk2sugars.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a006',name:'Viral Nation',speciality:'Influencer Marketing',website:'https://viralnation.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a007',name:'Citizen Relations',speciality:'PR & Communications',website:'https://citizenrelations.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a008',name:'Veritas Communications',speciality:'PR & Communications',website:'https://veritascomm.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a009',name:'Strategic Objectives',speciality:'PR & Influencer Marketing',website:'https://sopr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a010',name:'Blend PR',speciality:'PR & Communications',website:'https://blendpr.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a011',name:'NKPR',speciality:'PR & Lifestyle',website:'https://nkpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a012',name:'Faulhaber',speciality:'PR & Fashion',website:'https://faulhaber.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a013',name:'NATIONAL PR',speciality:'PR & Communications',website:'https://national.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a014',name:'Pomp & Circumstance',speciality:'PR & Lifestyle',website:'https://pompandcircumstancepr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
-  {id:'a015',name:'PR Axis',speciality:'PR & Communications',website:'https://praxis.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:'',brandsRepped:'',createdAt:'2026-05-22T00:00:00Z',updatedAt:'2026-05-22T00:00:00Z'},
+
+const DEFAULT_AGENCIES = [
+  {id:'a001',name:'Burson Canada',speciality:'PR & Communications',website:'https://burson.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a002',name:'Langton PR',speciality:'PR & Communications',website:'https://langtonpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a003',name:'Harbinger Ideas',speciality:'PR & Communications',website:'https://harbingerideas.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a004',name:'Matinee Studios',speciality:'PR & Talent',website:'https://matineestudios.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a005',name:'1 Milk 2 Sugars',speciality:'PR & Influencer Marketing',website:'https://1milk2sugars.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a006',name:'Viral Nation',speciality:'Influencer Marketing',website:'https://viralnation.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a007',name:'Citizen Relations',speciality:'PR & Communications',website:'https://citizenrelations.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a008',name:'Veritas Communications',speciality:'PR & Communications',website:'https://veritascomm.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a009',name:'Strategic Objectives',speciality:'PR & Influencer Marketing',website:'https://sopr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a010',name:'Blend PR',speciality:'PR & Communications',website:'https://blendpr.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a011',name:'NKPR',speciality:'PR & Lifestyle',website:'https://nkpr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a012',name:'Faulhaber',speciality:'PR & Fashion',website:'https://faulhaber.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a013',name:'NATIONAL PR',speciality:'PR & Communications',website:'https://national.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a014',name:'Pomp & Circumstance',speciality:'PR & Lifestyle',website:'https://pompandcircumstancepr.com',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
+  {id:'a015',name:'PR Axis',speciality:'PR & Communications',website:'https://praxis.ca',city:'Toronto',ig:'',status:'to-reach',notes:'',contact:'',email:''},
 ];
-let editingId    = null;
-let activeSection = 'brands';
-let activeBrandFilter   = '';
-let activeAgencyFilter  = '';
+
+let brands   = [];
+let agencies = [];
+let currentTab = 'brands';
+let activeFilter = '';
+let editingId = null;
 let selectedStatus = 'to-pitch';
-let saving = false;
-let modalMode = 'brands';
 
-const BRAND_STATUS_LABEL   = { 'to-pitch':'to pitch','pitched':'pitched','in-convo':'in conversation','working':'working with','past':'past collab','passed':'passed' };
-const BRAND_STATUS_CLASS   = { 'to-pitch':'badge-to-pitch','pitched':'badge-pitched','in-convo':'badge-in-convo','working':'badge-working','past':'badge-past','passed':'badge-passed' };
-const AGENCY_STATUS_LABEL  = { 'to-reach':'to reach out','reached':'reached out','meeting':'meeting booked','on-roster':'on roster','not-fit':'not a fit' };
-const AGENCY_STATUS_CLASS  = { 'to-reach':'badge-to-reach','reached':'badge-reached','meeting':'badge-meeting','on-roster':'badge-on-roster','not-fit':'badge-not-fit' };
-
-function setLoading(pct) {
-  document.getElementById('loading-bar').style.width = pct + '%';
-  if (pct >= 100) setTimeout(() => document.getElementById('loading-bar').style.width = '0', 400);
-}
-function setSyncNote(t) { document.getElementById('sync-note').textContent = t; }
-
-// ── STORAGE (localStorage) ──────────────────────────
-const STORE_KEY = `sr_local_${INFLUENCER_ID}`;
-const AGENCY_KEY = `sr_agency_${INFLUENCER_ID}`;
-
+// ── STORAGE ──────────────────────────────
 function saveData() {
-  localStorage.setItem(STORE_KEY, JSON.stringify(entries));
-  localStorage.setItem(AGENCY_KEY, JSON.stringify(agencies));
-  setSyncNote('✓ synced · updated just now');
-}
-
-// Save defaults to localStorage on first load so edits persist
-function initDefaults() {
-  const e = localStorage.getItem(STORE_KEY);
-  const a = localStorage.getItem(AGENCY_KEY);
-  if (!e || JSON.parse(e).length === 0) {
-    localStorage.setItem(STORE_KEY, JSON.stringify(entries));
-  }
-  if (!a || JSON.parse(a).length === 0) {
-    localStorage.setItem(AGENCY_KEY, JSON.stringify(agencies));
-  }
+  localStorage.setItem(BRANDS_KEY, JSON.stringify(brands));
+  localStorage.setItem(AGENCIES_KEY, JSON.stringify(agencies));
+  document.getElementById('sync-note').textContent = '✓ saved';
 }
 
 function loadData() {
   try {
-    const e = localStorage.getItem(STORE_KEY);
-    const a = localStorage.getItem(AGENCY_KEY);
-    // Only override pre-loaded defaults if localStorage has actual data
-    if (e) {
-      const parsed = JSON.parse(e);
-      if (Array.isArray(parsed) && parsed.length > 0) entries = parsed;
-    }
-    if (a) {
-      const parsed = JSON.parse(a);
-      if (Array.isArray(parsed) && parsed.length > 0) agencies = parsed;
-    }
-  } catch(err) {}
+    const b = localStorage.getItem(BRANDS_KEY);
+    const a = localStorage.getItem(AGENCIES_KEY);
+    brands   = (b && JSON.parse(b).length > 0) ? JSON.parse(b) : JSON.parse(JSON.stringify(DEFAULT_BRANDS));
+    agencies = (a && JSON.parse(a).length > 0) ? JSON.parse(a) : JSON.parse(JSON.stringify(DEFAULT_AGENCIES));
+  } catch(e) {
+    brands   = JSON.parse(JSON.stringify(DEFAULT_BRANDS));
+    agencies = JSON.parse(JSON.stringify(DEFAULT_AGENCIES));
+  }
 }
 
-// ── LOGIN // ── LOGIN ─────────────────────────────────────────────
+// ── LOGIN ────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.getItem(`sr_auth_${INFLUENCER_ID}`) === '1') { showApp(); return; }
   document.getElementById('l-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
@@ -518,8 +399,6 @@ function doLogin() {
   if (!email) { err.textContent = 'please enter your email.'; return; }
   if (pass !== PASSCODE) { err.textContent = 'incorrect passcode.'; return; }
   localStorage.setItem(`sr_auth_${INFLUENCER_ID}`, '1');
-  document.getElementById('login-btn').textContent = 'loading…';
-  document.getElementById('login-btn').disabled = true;
   showApp();
 }
 
@@ -528,306 +407,234 @@ function showApp() {
   const app = document.getElementById('screen-app');
   app.style.display = 'flex';
   app.style.flexDirection = 'column';
-  document.getElementById('t-name').textContent = INFLUENCER_NAME + '’s list';
+  document.getElementById('t-name').textContent = INFLUENCER_NAME + '\u2019s list';
   loadData();
-  initDefaults();
-  setSyncNote('✓ synced · changes save automatically');
-  renderBrands();
-}
-  else { activeAgencyFilter = btn.dataset.status; renderAgencies(); }
+  renderList();
 }
 
-function esc(s) { if (!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+// ── TABS ─────────────────────────────────
+function switchTab(tab) {
+  currentTab = tab;
+  activeFilter = '';
+  document.getElementById('tab-brands').classList.toggle('active', tab === 'brands');
+  document.getElementById('tab-agencies').classList.toggle('active', tab === 'agencies');
 
-// ── RENDER BRANDS ─────────────────────────────────────
-function renderBrands() {
-  const filtered = brands.filter(e => !activeBrandFilter || e.status === activeBrandFilter);
-  const body = document.getElementById('list-brands');
-  const empty = document.getElementById('empty-brands');
-  if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  body.innerHTML = filtered.map(e => `
-    <div class="brand-item brands-row" onclick="openModal('${e.id}','brands')">
-      <div>
-        <div class="brand-item-name">${esc(e.brand)||'—'}</div>
-        ${e.ig ? `<a class="brand-item-ig" href="https://instagram.com/${e.ig.replace('@','')}" target="_blank" onclick="event.stopPropagation()">↗ ${esc(e.ig)}</a>` : ''}
-      </div>
-      <div><span class="badge ${BRAND_STATUS_CLASS[e.status]||''}">${BRAND_STATUS_LABEL[e.status]||e.status}</span></div>
-      <div class="brand-notes">${esc(e.notes)||'—'}</div>
-      <div class="brand-arrow">›</div>
-    </div>
-  `).join('');
-}
-
-// ── RENDER AGENCIES ───────────────────────────────────
-function renderAgencies() {
-  const filtered = agencies.filter(e => !activeAgencyFilter || e.status === activeAgencyFilter);
-  const body = document.getElementById('list-agencies');
-  const empty = document.getElementById('empty-agencies');
-  if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
-  body.innerHTML = filtered.map(e => `
-    <div class="brand-item agencies-row" onclick="openModal('${e.id}','agencies')">
-      <div>
-        <div class="brand-item-name">${esc(e.name)||'—'}</div>
-        ${e.website ? `<a class="brand-item-ig" href="${esc(e.website)}" target="_blank" onclick="event.stopPropagation()">↗ website</a>` : ''}
-      </div>
-      <div><span class="badge ${AGENCY_STATUS_CLASS[e.status]||''}">${AGENCY_STATUS_LABEL[e.status]||e.status}</span></div>
-      <div class="brand-item-meta">${esc(e.speciality)||'—'}</div>
-      <div class="brand-notes">${esc(e.notes)||'—'}</div>
-      <div class="brand-arrow">›</div>
-    </div>
-  `).join('');
-}
-
-// ── MODAL ─────────────────────────────────────────────
-function openModal(id, section) {
-  editingId = id;
-  modalMode = section || activeSection;
-  document.getElementById('overlay').classList.add('open');
-  const delBtn = document.getElementById('btn-del');
-
-  if (id && modalMode === 'brands') {
-    const e = brands.find(x => x.id === id);
-    if (!e) return;
-    document.getElementById('m-heading').textContent = e.brand || 'edit';
-    document.getElementById('m-sub').textContent = 'edit brand details';
-    document.getElementById('modal-body-content').innerHTML = brandForm(e);
-    setStatusPicker(e.status || 'to-pitch', 'brands');
-    delBtn.style.display = 'block';
-  } else if (id && modalMode === 'agencies') {
-    const e = agencies.find(x => x.id === id);
-    if (!e) return;
-    document.getElementById('m-heading').textContent = e.name || 'edit';
-    document.getElementById('m-sub').textContent = 'edit agency details';
-    document.getElementById('modal-body-content').innerHTML = agencyForm(e);
-    setStatusPicker(e.status || 'to-reach', 'agencies');
-    delBtn.style.display = 'block';
-  } else if (modalMode === 'brands') {
-    document.getElementById('m-heading').textContent = 'new brand';
-    document.getElementById('m-sub').textContent = 'add to the list';
-    document.getElementById('modal-body-content').innerHTML = brandForm(null);
-    setStatusPicker('to-pitch', 'brands');
-    delBtn.style.display = 'none';
+  // Update filter pills
+  const fb = document.getElementById('filterbar');
+  if (tab === 'brands') {
+    fb.innerHTML = `<span class="filterbar-label">filter —</span>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this)">all</button>
+      <button class="filter-pill" data-status="to-pitch" onclick="setFilter(this)">to pitch</button>
+      <button class="filter-pill" data-status="pitched" onclick="setFilter(this)">pitched</button>
+      <button class="filter-pill" data-status="in-convo" onclick="setFilter(this)">in conversation</button>
+      <button class="filter-pill" data-status="working" onclick="setFilter(this)">working with</button>
+      <button class="filter-pill" data-status="past" onclick="setFilter(this)">past collab</button>
+      <button class="filter-pill" data-status="passed" onclick="setFilter(this)">passed</button>`;
+    document.getElementById('list-header').innerHTML = '<span>brand</span><span>status</span><span>notes from sub rosa</span><span></span>';
+    document.querySelector('.intro-heading').innerHTML = 'A living list of brands aligned<br>with my aesthetic and storytelling.';
+    document.querySelector('.intro-desc').textContent = 'For outreach, partnerships, and long-term collaboration — updated by sub rosa.';
   } else {
-    document.getElementById('m-heading').textContent = 'new agency';
-    document.getElementById('m-sub').textContent = 'add to pr agencies';
-    document.getElementById('modal-body-content').innerHTML = agencyForm(null);
-    setStatusPicker('to-reach', 'agencies');
-    delBtn.style.display = 'none';
+    fb.innerHTML = `<span class="filterbar-label">filter —</span>
+      <button class="filter-pill active" data-status="" onclick="setFilter(this)">all</button>
+      <button class="filter-pill" data-status="to-reach" onclick="setFilter(this)">to reach out</button>
+      <button class="filter-pill" data-status="reached" onclick="setFilter(this)">reached out</button>
+      <button class="filter-pill" data-status="meeting" onclick="setFilter(this)">meeting booked</button>
+      <button class="filter-pill" data-status="on-roster" onclick="setFilter(this)">on roster</button>
+      <button class="filter-pill" data-status="not-fit" onclick="setFilter(this)">not a fit</button>`;
+    document.getElementById('list-header').innerHTML = '<span>agency</span><span>status</span><span>notes</span><span></span>';
+    document.querySelector('.intro-heading').innerHTML = 'PR agencies to approach<br>on your behalf.';
+    document.querySelector('.intro-desc').textContent = 'Agencies sub rosa is pitching to secure brand partnerships for you.';
+  }
+  renderList();
+}
+
+function setFilter(btn) {
+  document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.status;
+  renderList();
+}
+
+function esc(s) {
+  if (!s) return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── RENDER ────────────────────────────────
+function renderList() {
+  const body  = document.getElementById('list-body');
+  const empty = document.getElementById('empty-msg');
+
+  if (currentTab === 'brands') {
+    const filtered = brands.filter(e => !activeFilter || e.status === activeFilter);
+    if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    body.innerHTML = filtered.map(e => `
+      <div class="brand-item" onclick="openModal('${e.id}')">
+        <div>
+          <div class="brand-item-name">${esc(e.brand)||'—'}</div>
+          ${e.ig ? `<a class="brand-item-ig" href="https://instagram.com/${e.ig.replace('@','')}" target="_blank" onclick="event.stopPropagation()">↗ ${esc(e.ig)}</a>` : ''}
+          ${e.why ? `<div class="brand-item-sub">${esc(e.why)}</div>` : ''}
+        </div>
+        <div><span class="badge ${STATUS_CLASS[e.status]||''}">${STATUS_LABEL[e.status]||e.status}</span></div>
+        <div class="brand-notes">${esc(e.notes)||'—'}</div>
+        <div class="brand-arrow">›</div>
+      </div>`).join('');
+  } else {
+    const filtered = agencies.filter(e => !activeFilter || e.status === activeFilter);
+    if (filtered.length === 0) { body.innerHTML = ''; empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
+    body.innerHTML = filtered.map(e => `
+      <div class="brand-item" onclick="openModal('${e.id}')">
+        <div>
+          <div class="brand-item-name">${esc(e.name)||'—'}</div>
+          ${e.speciality ? `<div class="brand-item-sub">${esc(e.speciality)}</div>` : ''}
+        </div>
+        <div><span class="badge ${STATUS_CLASS[e.status]||''}">${STATUS_LABEL[e.status]||e.status}</span></div>
+        <div class="brand-notes">${esc(e.notes)||'—'}</div>
+        <div class="brand-arrow">›</div>
+      </div>`).join('');
   }
 }
 
-function brandForm(e) {
-  return `
-    <div class="form-section">
-      <div class="m-section-label">brand</div>
-      <div class="field-row">
-        <div class="field"><label>brand name</label><input type="text" id="f-brand" placeholder="e.g. Aesop" value="${esc(e?.brand||'')}" /></div>
-        <div class="field"><label>instagram</label><input type="text" id="f-ig" placeholder="@handle" value="${esc(e?.ig||'')}" /></div>
-      </div>
-      <div class="field-row full">
-        <div class="field"><label>website</label><input type="url" id="f-website" placeholder="https://..." value="${esc(e?.website||'')}" /></div>
-      </div>
-      <div class="field-row full">
-        <div class="field"><label>why this brand?</label><textarea id="f-why" placeholder="Why do you want to work with them?">${esc(e?.why||'')}</textarea></div>
-      </div>
-    </div>
-    <div class="form-section">
-      <div class="m-section-label">status — updated by sub rosa</div>
-      <div class="status-dropdown-wrap" id="status-picker">
-        <button class="status-dd-trigger" onclick="toggleDropdown(event)" id="dd-trigger">
-          <span class="status-dd-dot" id="dd-dot"></span>
-          <span class="status-dd-label" id="dd-label">to pitch</span>
-          <span class="status-dd-arrow">&#8963;</span>
-        </button>
-        <div class="status-dd-menu" id="dd-menu">
-          <button class="status-dd-item" data-val="to-pitch" onclick="pickStatus(this)"><span class="dot dot-empty"></span>TO PITCH</button>
-          <button class="status-dd-item" data-val="pitched" onclick="pickStatus(this)"><span class="dot dot-amber"></span>PITCHED</button>
-          <button class="status-dd-item" data-val="in-convo" onclick="pickStatus(this)"><span class="dot dot-amber"></span>IN CONVERSATION</button>
-          <button class="status-dd-item" data-val="working" onclick="pickStatus(this)"><span class="dot dot-green"></span>WORKING WITH</button>
-          <button class="status-dd-item" data-val="past" onclick="pickStatus(this)"><span class="dot dot-purple"></span>PAST COLLAB</button>
-          <button class="status-dd-item" data-val="passed" onclick="pickStatus(this)"><span class="dot dot-empty"></span>PASSED</button>
-        </div>
-      </div>
-    </div>
-    <div class="form-section">
-      <div class="m-section-label">sub rosa notes</div>
-      <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Updates from sub rosa…">${esc(e?.notes||'')}</textarea></div></div>
-      <div class="field-row">
-        <div class="field"><label>contact name</label><input type="text" id="f-contact" placeholder="Brand contact" value="${esc(e?.contact||'')}" /></div>
-        <div class="field"><label>agreed amount</label><input type="text" id="f-amount" placeholder="$0" value="${esc(e?.amount||'')}" /></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>deliverables</label><input type="text" id="f-deliverables" placeholder="e.g. 1 Reel, 3 Stories" value="${esc(e?.deliverables||'')}" /></div>
-        <div class="field"><label>due date</label><input type="date" id="f-due" value="${esc(e?.due||'')}" /></div>
-      </div>
-    </div>`;
-}
+// ── MODAL ─────────────────────────────────
+function openModal(id) {
+  editingId = id;
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('btn-del').style.display = id ? 'block' : 'none';
 
-function agencyForm(e) {
-  return `
-    <div class="form-section">
-      <div class="m-section-label">agency</div>
-      <div class="field-row">
-        <div class="field"><label>agency name</label><input type="text" id="f-name" placeholder="e.g. Weber Shandwick" value="${esc(e?.name||'')}" /></div>
-        <div class="field"><label>speciality</label><input type="text" id="f-speciality" placeholder="e.g. Beauty, Lifestyle" value="${esc(e?.speciality||'')}" /></div>
+  if (currentTab === 'brands') {
+    const e = id ? brands.find(x => x.id === id) : null;
+    selectedStatus = e?.status || 'to-pitch';
+    document.getElementById('m-heading').textContent = e ? (e.brand || 'edit') : 'new brand';
+    document.getElementById('m-sub').textContent = e ? 'edit brand details' : 'add to the list';
+    document.getElementById('m-body').innerHTML = `
+      <div class="form-section">
+        <div class="section-label">brand</div>
+        <div class="field-row"><div class="field"><label>brand name</label><input id="f-brand" type="text" value="${esc(e?.brand||'')}" placeholder="e.g. Aesop" /></div>
+        <div class="field"><label>instagram</label><input id="f-ig" type="text" value="${esc(e?.ig||'')}" placeholder="@handle" /></div></div>
+        <div class="field-row full"><div class="field"><label>website</label><input id="f-website" type="url" value="${esc(e?.website||'')}" placeholder="https://..." /></div></div>
+        <div class="field-row full"><div class="field"><label>why this brand?</label><textarea id="f-why" placeholder="Category, aesthetic fit, why you love them…">${esc(e?.why||'')}</textarea></div></div>
       </div>
-      <div class="field-row full">
-        <div class="field"><label>website</label><input type="url" id="f-website" placeholder="https://..." value="${esc(e?.website||'')}" /></div>
+      <div class="form-section">
+        <div class="section-label">status — updated by sub rosa</div>
+        <div class="field-row full"><div class="field"><select id="f-status" onchange="selectedStatus=this.value">
+          <option value="to-pitch" ${selectedStatus==='to-pitch'?'selected':''}>To Pitch</option>
+          <option value="pitched" ${selectedStatus==='pitched'?'selected':''}>Pitched</option>
+          <option value="in-convo" ${selectedStatus==='in-convo'?'selected':''}>In Conversation</option>
+          <option value="working" ${selectedStatus==='working'?'selected':''}>Working With</option>
+          <option value="past" ${selectedStatus==='past'?'selected':''}>Past Collab</option>
+          <option value="passed" ${selectedStatus==='passed'?'selected':''}>Passed</option>
+        </select></div></div>
       </div>
-      <div class="field-row">
-        <div class="field"><label>city</label><input type="text" id="f-city" placeholder="e.g. Toronto" value="${esc(e?.city||'')}" /></div>
-        <div class="field"><label>instagram</label><input type="text" id="f-ig" placeholder="@handle" value="${esc(e?.ig||'')}" /></div>
+      <div class="form-section">
+        <div class="section-label">sub rosa notes</div>
+        <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Updates, deal details, next steps…">${esc(e?.notes||'')}</textarea></div></div>
+        <div class="field-row"><div class="field"><label>contact name</label><input id="f-contact" type="text" value="${esc(e?.contact||'')}" placeholder="Brand contact" /></div>
+        <div class="field"><label>agreed amount</label><input id="f-amount" type="text" value="${esc(e?.amount||'')}" placeholder="$0" /></div></div>
+        <div class="field-row"><div class="field"><label>deliverables</label><input id="f-deliverables" type="text" value="${esc(e?.deliverables||'')}" placeholder="1 Reel, 3 Stories" /></div>
+        <div class="field"><label>due date</label><input id="f-due" type="date" value="${esc(e?.due||'')}" /></div></div>
+      </div>`;
+  } else {
+    const e = id ? agencies.find(x => x.id === id) : null;
+    selectedStatus = e?.status || 'to-reach';
+    document.getElementById('m-heading').textContent = e ? (e.name || 'edit') : 'new agency';
+    document.getElementById('m-sub').textContent = e ? 'edit agency details' : 'add to pr agencies';
+    document.getElementById('m-body').innerHTML = `
+      <div class="form-section">
+        <div class="section-label">agency</div>
+        <div class="field-row"><div class="field"><label>agency name</label><input id="f-name" type="text" value="${esc(e?.name||'')}" placeholder="e.g. Burson Canada" /></div>
+        <div class="field"><label>speciality</label><input id="f-speciality" type="text" value="${esc(e?.speciality||'')}" placeholder="PR & Communications" /></div></div>
+        <div class="field-row"><div class="field"><label>website</label><input id="f-website" type="url" value="${esc(e?.website||'')}" placeholder="https://..." /></div>
+        <div class="field"><label>city</label><input id="f-city" type="text" value="${esc(e?.city||'')}" placeholder="Toronto" /></div></div>
       </div>
-    </div>
-    <div class="form-section">
-      <div class="m-section-label">status — updated by sub rosa</div>
-      <div class="status-dropdown-wrap" id="status-picker">
-        <button class="status-dd-trigger" onclick="toggleDropdown(event)" id="dd-trigger">
-          <span class="status-dd-dot" id="dd-dot"></span>
-          <span class="status-dd-label" id="dd-label">to reach out</span>
-          <span class="status-dd-arrow">&#8963;</span>
-        </button>
-        <div class="status-dd-menu" id="dd-menu">
-        <button class="status-dd-item" data-val="to-reach" onclick="pickStatus(this)"><span class="dot dot-empty"></span>TO REACH OUT</button>
-        <button class="status-dd-item" data-val="reached" onclick="pickStatus(this)"><span class="dot dot-amber"></span>REACHED OUT</button>
-        <button class="status-dd-item" data-val="meeting" onclick="pickStatus(this)"><span class="dot dot-amber"></span>MEETING BOOKED</button>
-        <button class="status-dd-item" data-val="on-roster" onclick="pickStatus(this)"><span class="dot dot-green"></span>ON ROSTER</button>
-        <button class="status-dd-item" data-val="not-fit" onclick="pickStatus(this)"><span class="dot dot-empty"></span>NOT A FIT</button>
-        </div>
+      <div class="form-section">
+        <div class="section-label">status</div>
+        <div class="field-row full"><div class="field"><select id="f-status" onchange="selectedStatus=this.value">
+          <option value="to-reach" ${selectedStatus==='to-reach'?'selected':''}>To Reach Out</option>
+          <option value="reached" ${selectedStatus==='reached'?'selected':''}>Reached Out</option>
+          <option value="meeting" ${selectedStatus==='meeting'?'selected':''}>Meeting Booked</option>
+          <option value="on-roster" ${selectedStatus==='on-roster'?'selected':''}>On Roster</option>
+          <option value="not-fit" ${selectedStatus==='not-fit'?'selected':''}>Not a Fit</option>
+        </select></div></div>
       </div>
-    </div>
-    <div class="form-section">
-      <div class="m-section-label">sub rosa notes</div>
-      <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Notes on the agency — who to contact, what they rep, conversation history…">${esc(e?.notes||'')}</textarea></div></div>
-      <div class="field-row">
-        <div class="field"><label>contact name</label><input type="text" id="f-contact" placeholder="Key contact" value="${esc(e?.contact||'')}" /></div>
-        <div class="field"><label>contact email</label><input type="email" id="f-email" placeholder="email@agency.com" value="${esc(e?.email||'')}" /></div>
-      </div>
-      <div class="field-row full">
-        <div class="field"><label>brands they represent</label><input type="text" id="f-brands-repped" placeholder="e.g. L'Oréal, Maybelline, Garnier" value="${esc(e?.brandsRepped||'')}" /></div>
-      </div>
-    </div>`;
+      <div class="form-section">
+        <div class="section-label">notes</div>
+        <div class="field-row full"><div class="field"><textarea id="f-notes" placeholder="Notes, contact details, next steps…">${esc(e?.notes||'')}</textarea></div></div>
+        <div class="field-row"><div class="field"><label>contact name</label><input id="f-contact" type="text" value="${esc(e?.contact||'')}" placeholder="Contact name" /></div>
+        <div class="field"><label>email</label><input id="f-email" type="email" value="${esc(e?.email||'')}" placeholder="contact@agency.com" /></div></div>
+      </div>`;
+  }
 }
 
 function closeModal() { document.getElementById('overlay').classList.remove('open'); editingId = null; }
 function overlayClick(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
 
-function toggleDropdown(e) {
-  e.stopPropagation();
-  const menu = document.getElementById('dd-menu');
-  const trigger = document.getElementById('dd-trigger');
-  const isOpen = menu.classList.contains('open');
-  menu.classList.toggle('open', !isOpen);
-  trigger.classList.toggle('open', !isOpen);
-}
-document.addEventListener('click', () => {
-  const menu = document.getElementById('dd-menu');
-  const trigger = document.getElementById('dd-trigger');
-  if (menu) { menu.classList.remove('open'); }
-  if (trigger) { trigger.classList.remove('open'); }
-});
-const DOT_COLORS = {
-  'to-pitch':'transparent','pitched':'#e8c96a','in-convo':'#e8c96a','working':'#85d4a0','past':'#c9b8f5','passed':'transparent',
-  'to-reach':'transparent','reached':'#e8c96a','meeting':'#e8c96a','on-roster':'#85d4a0','not-fit':'transparent'
-};
-const DOT_BORDER = ['to-pitch','passed','to-reach','not-fit'];
-const LABEL_MAP = {
-  'to-pitch':'TO PITCH','pitched':'PITCHED','in-convo':'IN CONVERSATION','working':'WORKING WITH','past':'PAST COLLAB','passed':'PASSED',
-  'to-reach':'TO REACH OUT','reached':'REACHED OUT','meeting':'MEETING BOOKED','on-roster':'ON ROSTER','not-fit':'NOT A FIT'
-};
-function setStatusPicker(val, mode) {
-  selectedStatus = val;
-  setTimeout(() => {
-    const dot = document.getElementById('dd-dot');
-    const label = document.getElementById('dd-label');
-    if (dot && label) {
-      dot.style.background = DOT_COLORS[val] || 'transparent';
-      dot.style.border = DOT_BORDER.includes(val) ? '1.5px solid #c5bfb5' : 'none';
-      label.textContent = LABEL_MAP[val] || val;
-    }
-    document.querySelectorAll('#status-picker .status-dd-item').forEach(btn => {
-      btn.classList.toggle('selected', btn.dataset.val === val);
-    });
-  }, 10);
-}
-function pickStatus(btn) {
-  selectedStatus = btn.dataset.val;
-  const dot = document.getElementById('dd-dot');
-  const label = document.getElementById('dd-label');
-  if (dot && label) {
-    dot.style.background = DOT_COLORS[selectedStatus] || 'transparent';
-    dot.style.border = DOT_BORDER.includes(selectedStatus) ? '1.5px solid #c5bfb5' : 'none';
-    label.textContent = LABEL_MAP[selectedStatus] || selectedStatus;
-  }
-  document.querySelectorAll('#status-picker .status-dd-item').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  const menu = document.getElementById('dd-menu');
-  const trigger = document.getElementById('dd-trigger');
-  if (menu) menu.classList.remove('open');
-  if (trigger) trigger.classList.remove('open');
-}
-
-// ── SAVE / DELETE ─────────────────────────────────────
+// ── SAVE / DELETE ─────────────────────────
 function saveEntry() {
-  if (modalMode === 'brands') {
+  if (currentTab === 'brands') {
     const brand = document.getElementById('f-brand')?.value.trim();
     if (!brand) { alert('Please enter a brand name.'); return; }
     const data = {
-      brand, ig: document.getElementById('f-ig')?.value.trim(),
-      website: document.getElementById('f-website')?.value.trim(),
-      why: document.getElementById('f-why')?.value.trim(),
-      status: selectedStatus,
-      notes: document.getElementById('f-notes')?.value.trim(),
-      contact: document.getElementById('f-contact')?.value.trim(),
-      amount: document.getElementById('f-amount')?.value.trim(),
-      deliverables: document.getElementById('f-deliverables')?.value.trim(),
-      due: document.getElementById('f-due')?.value,
-      updatedAt: new Date().toISOString(),
+      brand,
+      ig:           document.getElementById('f-ig')?.value.trim() || '',
+      website:      document.getElementById('f-website')?.value.trim() || '',
+      why:          document.getElementById('f-why')?.value.trim() || '',
+      status:       document.getElementById('f-status')?.value || 'to-pitch',
+      notes:        document.getElementById('f-notes')?.value.trim() || '',
+      contact:      document.getElementById('f-contact')?.value.trim() || '',
+      amount:       document.getElementById('f-amount')?.value.trim() || '',
+      deliverables: document.getElementById('f-deliverables')?.value.trim() || '',
+      due:          document.getElementById('f-due')?.value || '',
+      updatedAt:    new Date().toISOString(),
     };
     if (editingId) {
       const idx = brands.findIndex(e => e.id === editingId);
       if (idx > -1) brands[idx] = { ...brands[idx], ...data };
-    } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; brands.unshift(data); }
-    saveData();
-    renderBrands();
+    } else {
+      data.id = crypto.randomUUID();
+      data.createdAt = data.updatedAt;
+      brands.unshift(data);
+    }
   } else {
     const name = document.getElementById('f-name')?.value.trim();
     if (!name) { alert('Please enter an agency name.'); return; }
     const data = {
-      name, speciality: document.getElementById('f-speciality')?.value.trim(),
-      website: document.getElementById('f-website')?.value.trim(),
-      city: document.getElementById('f-city')?.value.trim(),
-      ig: document.getElementById('f-ig')?.value.trim(),
-      status: selectedStatus,
-      notes: document.getElementById('f-notes')?.value.trim(),
-      contact: document.getElementById('f-contact')?.value.trim(),
-      email: document.getElementById('f-email')?.value.trim(),
-      brandsRepped: document.getElementById('f-brands-repped')?.value.trim(),
-      updatedAt: new Date().toISOString(),
+      name,
+      speciality: document.getElementById('f-speciality')?.value.trim() || '',
+      website:    document.getElementById('f-website')?.value.trim() || '',
+      city:       document.getElementById('f-city')?.value.trim() || '',
+      ig:         document.getElementById('f-ig')?.value.trim() || '',
+      status:     document.getElementById('f-status')?.value || 'to-reach',
+      notes:      document.getElementById('f-notes')?.value.trim() || '',
+      contact:    document.getElementById('f-contact')?.value.trim() || '',
+      email:      document.getElementById('f-email')?.value.trim() || '',
+      updatedAt:  new Date().toISOString(),
     };
     if (editingId) {
       const idx = agencies.findIndex(e => e.id === editingId);
       if (idx > -1) agencies[idx] = { ...agencies[idx], ...data };
-    } else { data.id = crypto.randomUUID(); data.createdAt = data.updatedAt; agencies.unshift(data); }
-    saveData();
-    renderAgencies();
+    } else {
+      data.id = crypto.randomUUID();
+      data.createdAt = data.updatedAt;
+      agencies.unshift(data);
+    }
   }
+  saveData();
   closeModal();
+  renderList();
 }
 
 function deleteEntry() {
   if (!editingId || !confirm('Remove this entry?')) return;
-  if (modalMode === 'brands') {
+  if (currentTab === 'brands') {
     brands = brands.filter(e => e.id !== editingId);
-    renderBrands();
   } else {
     agencies = agencies.filter(e => e.id !== editingId);
-    renderAgencies();
   }
   saveData();
   closeModal();
+  renderList();
 }
 </script>
 </body>
