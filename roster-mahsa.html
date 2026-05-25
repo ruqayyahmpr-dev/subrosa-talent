@@ -366,12 +366,31 @@ function saveData() {
   setSyncNote('✓ synced · updated just now');
 }
 
+// Save defaults to localStorage on first load so edits persist
+function initDefaults() {
+  const e = localStorage.getItem(STORE_KEY);
+  const a = localStorage.getItem(AGENCY_KEY);
+  if (!e || JSON.parse(e).length === 0) {
+    localStorage.setItem(STORE_KEY, JSON.stringify(entries));
+  }
+  if (!a || JSON.parse(a).length === 0) {
+    localStorage.setItem(AGENCY_KEY, JSON.stringify(agencies));
+  }
+}
+
 function loadData() {
   try {
     const e = localStorage.getItem(STORE_KEY);
     const a = localStorage.getItem(AGENCY_KEY);
-    if (e) entries = JSON.parse(e);
-    if (a) agencies = JSON.parse(a);
+    // Only override pre-loaded defaults if localStorage has actual data
+    if (e) {
+      const parsed = JSON.parse(e);
+      if (Array.isArray(parsed) && parsed.length > 0) entries = parsed;
+    }
+    if (a) {
+      const parsed = JSON.parse(a);
+      if (Array.isArray(parsed) && parsed.length > 0) agencies = parsed;
+    }
   } catch(err) {}
 }
 
